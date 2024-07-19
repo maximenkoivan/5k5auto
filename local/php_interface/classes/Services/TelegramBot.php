@@ -2,7 +2,7 @@
 
 namespace classes\Services;
 
-use classes\Models\ReplaceGlazing\Feedback\FormSettings;
+use classes\Models\FiveKFiveAuto\Feedback\FormSettings;
 
 class TelegramBot
 {
