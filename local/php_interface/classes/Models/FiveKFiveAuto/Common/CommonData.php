@@ -1,12 +1,12 @@
 <?php
 
-namespace classes\Models\ReplaceGlazing\Common;
+namespace classes\Models\FiveKFiveAuto\Common;
 
 use classes\Models\Base\Iblock;
 
 final class CommonData extends Iblock
 {
-    protected const IBLOCK_TYPE_CODE = 'replace_glazing';
+    protected const IBLOCK_TYPE_CODE = '5k5auto';
 
     protected const IBLOCK_CODE = 'common_data';
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace classes\Models\ReplaceGlazing\Content;
+namespace classes\Models\FiveKFiveAuto\Content;
 
 use classes\Models\Base\Iblock;
 
 final class Content extends Iblock
 {
-    protected const IBLOCK_TYPE_CODE = 'replace_glazing';
+    protected const IBLOCK_TYPE_CODE = '5k5auto';
 
     protected const IBLOCK_CODE = 'content';
 }

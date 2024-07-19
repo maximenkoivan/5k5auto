@@ -1,12 +1,12 @@
 <?php
 
-namespace classes\Models\ReplaceGlazing\Feedback;
+namespace classes\Models\FiveKFiveAuto\Feedback;
 
 use classes\Models\Base\Iblock;
 
 class CalculateCost extends Iblock
 {
-    protected const IBLOCK_TYPE_CODE = 'replace_glazing';
+    protected const IBLOCK_TYPE_CODE = '5k5auto';
 
     private array $formFields = [
         'formName' => [
