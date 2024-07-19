@@ -1,7 +1,7 @@
 <?php
 
-use classes\Models\ReplaceGlazing\Common\CommonData;
-use classes\Models\ReplaceGlazing\Feedback\FormSettings;
+use classes\Models\FiveKFiveAuto\Common\CommonData;
+use classes\Models\FiveKFiveAuto\Feedback\FormSettings;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /**
