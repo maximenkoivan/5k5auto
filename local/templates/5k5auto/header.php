@@ -21,7 +21,7 @@ $assets->addJs(SITE_TEMPLATE_PATH . '/assets/js/fancybox.umd.js');
 $assets->addJs(SITE_TEMPLATE_PATH . '/assets/js/imask.min.js');
 $assets->addJs(SITE_TEMPLATE_PATH . '/assets/js/swiper-bundle.min.js');
 $assets->addJs(SITE_TEMPLATE_PATH . '/assets/js/common.js');
-$headerData = \classes\Models\ReplaceGlazing\Common\CommonData::getInstance()->getPropertiesByPostfix('HEADER')->cashed('header')->getResult();
+$headerData = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByPostfix('HEADER')->cashed('header')->getResult();
 ?>
     <!DOCTYPE html>
 <html lang="<?= LANGUAGE_ID ?>">

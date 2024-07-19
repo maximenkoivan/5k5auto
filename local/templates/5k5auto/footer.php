@@ -1,10 +1,10 @@
 <?php
 
 use classes\Helpers\Generic;
-use classes\Models\ReplaceGlazing\Feedback\FormSettings;
+use classes\Models\FiveKFiveAuto\Feedback\FormSettings;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-$footerData = \classes\Models\ReplaceGlazing\Common\CommonData::getInstance()->getPropertiesByPostfix('FOOTER')->cashed('footer')->getResult();
+$footerData = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByPostfix('FOOTER')->cashed('footer')->getResult();
 ?>
 <footer class="footer-section mt-md-5 mt-4">
     <div class="container">
@@ -142,7 +142,7 @@ $footerData = \classes\Models\ReplaceGlazing\Common\CommonData::getInstance()->g
         "FIELD_CODE" => array(""),
         "GROUP_PERMISSIONS" => array(""),
         "IBLOCK_ID" => FormSettings::getInstance()->getIblockId(),
-        "IBLOCK_TYPE" => "replace_glazing",
+        "IBLOCK_TYPE" => "5k5auto",
         "IBLOCK_URL" => "",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "MESSAGE_404" => "",
