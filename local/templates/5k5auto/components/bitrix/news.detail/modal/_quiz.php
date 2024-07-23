@@ -5,7 +5,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 ?>
 <div id="modal-quiz" class="modal-quiz">
     <div class="modal-quiz__wrapper">
-        <form class="quiz-form" action="/callback.php" method="POST" data-success-header="Заявка отправлена"
+        <form class="quiz-form" action="/request/feedback.php" method="POST" data-success-header="Заявка отправлена"
               data-success-message="Спасибо за заполнение данной формы. Мы свяжемся с вами в ближайшее время.">
             <div class="container">
                 <div class="modal-quiz__item quiz-start quiz-active">
