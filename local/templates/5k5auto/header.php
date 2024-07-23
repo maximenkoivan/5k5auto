@@ -91,4 +91,3 @@ $headerData = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->ge
         </div>
     </div>
 </header>
-<main class="main">

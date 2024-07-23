@@ -5,27 +5,59 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @global CMain $APPLICATION
  */
 ?>
-<?php if (!empty($arResult['PROPERTIES']['ELEMENTS_ADVANTAGES']['VALUE'])): ?>
-    <section class="section-wrapper why-us gr-background">
-        <div class="container">
-            <h2 class="section-heading kc-bold t-center"><?= $arResult['PROPERTIES']['TITLE_ADVANTAGES']['VALUE'] ?></h2>
-            <div class="whyus-row">
-                <?php foreach ($arResult['PROPERTIES']['ELEMENTS_ADVANTAGES']['VALUE'] as $advantage): ?>
-                    <?php if (empty($advantage['SUB_VALUES']['IMAGE_ELEMENT_ADVANTAGES']['VALUE'])) continue; ?>
-                    <div class="whyus-grid-col">
-                        <div class="icon-text-box gr-background d-flex justify-content-center align-items-center flex-column">
-                            <div class="icon-box">
-                                <img src="<?= CFile::GetPath($advantage['SUB_VALUES']['IMAGE_ELEMENT_ADVANTAGES']['VALUE']) ?>"
-                                     alt="<?= $advantage['SUB_VALUES']['TITLE_ELEMENT_ADVANTAGES']['VALUE'] ?>">
-                            </div>
-                            <h3 class="icon-text-box-heading kc-bold"><?= $advantage['SUB_VALUES']['TITLE_ELEMENT_ADVANTAGES']['VALUE'] ?></h3>
-                            <p class="icon-text">
-                                <?= $advantage['SUB_VALUES']['DESC_ELEMENT_ADVANTAGES']['VALUE'] ?>
-                            </p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+<section class="advantages">
+    <div class="container">
+        <h2 class="advantages__title">Преимущества</h2>
+        <div class="advantages__list advantages-cards">
+            <div class="advantages-cards__item">
+                <div class="advantages-cards__img">
+                    <img width="126" height="126" src="images/advantages_1.svg" alt="Картинка">
+                </div>
+                <p class="advantages-cards__text">
+                    Оперативная помощь в подборе пленки для вашего авто
+                </p>
+            </div>
+            <div class="advantages-cards__item">
+                <div class="advantages-cards__img">
+                    <img width="90" height="90" src="images/advantages_2.svg" alt="Картинка">
+                </div>
+                <p class="advantages-cards__text">
+                    Одна из лучших<br> цен на рынке
+                </p>
+            </div>
+            <div class="advantages-cards__item">
+                <div class="advantages-cards__img">
+                    <img width="126" height="126" src="images/advantages_3.svg" alt="Картинка">
+                </div>
+                <p class="advantages-cards__text">
+                    Без затягивания<br> сроков
+                </p>
+            </div>
+            <div class="advantages-cards__item">
+                <div class="advantages-cards__img">
+                    <img width="90" height="90" src="/images/advantages_4.svg" alt="Картинка">
+                </div>
+                <p class="advantages-cards__text">
+                    Гарантия качества<br>
+                    и результата
+                </p>
+            </div>
+            <div class="advantages-cards__item">
+                <div class="advantages-cards__img">
+                    <img width="126" height="126" src="images/advantages_5.svg" alt="Картинка">
+                </div>
+                <p class="advantages-cards__text">
+                    Сертифицированный<br> материал
+                </p>
+            </div>
+            <div class="advantages-cards__item">
+                <div class="advantages-cards__img">
+                    <img width="90" height="90" src="images/advantages_6.svg" alt="Картинка">
+                </div>
+                <p class="advantages-cards__text">
+                    Индивидуальные<br> решения
+                </p>
             </div>
         </div>
-    </section>
-<?php endif; ?>
+    </div>
+</section>
