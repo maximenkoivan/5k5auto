@@ -29,7 +29,8 @@ $headerData = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->ge
     <meta property="og:url" content="<?= $HTTP_X_FORWARDED_PROTO . '://' . SITE_SERVER_NAME ?>"/>
     <meta property="og:title" content="<?php $APPLICATION->ShowTitle(); ?>"/>
     <meta property="og:description" content="<?php $APPLICATION->ShowProperty('description', ''); ?>"/>
-    <meta property="og:image" content="<?= $HTTP_X_FORWARDED_PROTO . '://' . SITE_SERVER_NAME . SITE_TEMPLATE_PATH . '/assets/images/favicon/favicon-120x120.png' ?>"/>
+    <meta property="og:image"
+          content="<?= $HTTP_X_FORWARDED_PROTO . '://' . SITE_SERVER_NAME . SITE_TEMPLATE_PATH . '/assets/images/favicon/favicon-120x120.png' ?>"/>
 
     <?php $APPLICATION->ShowHead() ?>
 
@@ -44,49 +45,49 @@ $headerData = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->ge
         <div class="header-info">
             <div class="header-info__left">
                 <div class="header-info__content">
-                    <div class="header-info__logo">
-                        <div>
-                            <?php if (!empty($headerData['LOGO_HEADER']['VALUE'])): ?>
+                    <a class="header-info__logo">
+                        <?php if (!empty($headerData['LOGO_HEADER']['VALUE'])): ?>
+                            <a href="<?= $headerData['LOGO_HEADER']['DESCRIPTION'] ?>" target="_blank" rel="noopener noreferrer">
                                 <img src="<?= CFile::GetPath($headerData['LOGO_HEADER']['VALUE']) ?>" width="98"
                                      height="77" alt="<?= $headerData['LOGO_HEADER']['DESCRIPTION'] ?>">
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <p class="header-info__adress">
-                        <?= $headerData['ADDRESS_HEADER']['~VALUE'] ?>
-                    </p>
+                            </a>
+                        <?php endif; ?>
                 </div>
-                <div class="header-info__select">
-                    <?php if (!empty($headerData['BTN_TEXT_HEADER']['~VALUE'])): ?>
-                        <button class="header-info__consultation" data-src="#modal-call">
-                            <?= $headerData['BTN_TEXT_HEADER']['~VALUE'] ?>
-                        </button>
-                    <?php endif; ?>
-                </div>
+                <p class="header-info__adress">
+                    <?= $headerData['ADDRESS_HEADER']['~VALUE'] ?>
+                </p>
             </div>
-            <div class="header-info__right">
-                <ul class="header-info__contacts">
-                    <?php if (!empty($headerData['PHONE_HEADER']['~VALUE'])): ?>
-                        <li><a href="tel:<?= Generic::getCleanPhoneNumber($headerData['PHONE_HEADER']['~VALUE']) ?>"
-                               rel="noopener noreferrer"><?= $headerData['PHONE_HEADER']['~VALUE'] ?></a></li>
-                    <?php endif; ?>
-                    <?php if (!empty($headerData['EMAIL_HEADER']['~VALUE'])): ?>
-                        <li><a href="mailto:<?= $headerData['EMAIL_HEADER']['~VALUE'] ?>" target="_blank"
-                               rel="noopener noreferrer"><?= $headerData['EMAIL_HEADER']['~VALUE'] ?></a></li>
-                    <?php endif; ?>
-                </ul>
+            <div class="header-info__select">
                 <?php if (!empty($headerData['BTN_TEXT_HEADER']['~VALUE'])): ?>
-                    <button class="header-info__consultation header-info__consultation_pc" data-src="#modal-call">
+                    <button class="header-info__consultation" data-src="#modal-call">
                         <?= $headerData['BTN_TEXT_HEADER']['~VALUE'] ?>
                     </button>
                 <?php endif; ?>
             </div>
         </div>
-        <div class="header-navigation hero-navigation">
-            <div class="hero-navigation__step step-one active"><?= $headerData['MARK_SLIDE_1_HEADER']['~VALUE'] ?></div>
-            <div class="hero-navigation__step step-two"><?= $headerData['MARK_SLIDE_2_HEADER']['~VALUE'] ?></div>
-            <div class="hero-navigation__step step-three"><?= $headerData['MARK_SLIDE_3_HEADER']['~VALUE'] ?></div>
+        <div class="header-info__right">
+            <ul class="header-info__contacts">
+                <?php if (!empty($headerData['PHONE_HEADER']['~VALUE'])): ?>
+                    <li><a href="tel:<?= Generic::getCleanPhoneNumber($headerData['PHONE_HEADER']['~VALUE']) ?>"
+                           rel="noopener noreferrer"><?= $headerData['PHONE_HEADER']['~VALUE'] ?></a></li>
+                <?php endif; ?>
+                <?php if (!empty($headerData['EMAIL_HEADER']['~VALUE'])): ?>
+                    <li><a href="mailto:<?= $headerData['EMAIL_HEADER']['~VALUE'] ?>" target="_blank"
+                           rel="noopener noreferrer"><?= $headerData['EMAIL_HEADER']['~VALUE'] ?></a></li>
+                <?php endif; ?>
+            </ul>
+            <?php if (!empty($headerData['BTN_TEXT_HEADER']['~VALUE'])): ?>
+                <button class="header-info__consultation header-info__consultation_pc" data-src="#modal-call">
+                    <?= $headerData['BTN_TEXT_HEADER']['~VALUE'] ?>
+                </button>
+            <?php endif; ?>
         </div>
+    </div>
+    <div class="header-navigation hero-navigation">
+        <div class="hero-navigation__step step-one active"><?= $headerData['MARK_SLIDE_1_HEADER']['~VALUE'] ?></div>
+        <div class="hero-navigation__step step-two"><?= $headerData['MARK_SLIDE_2_HEADER']['~VALUE'] ?></div>
+        <div class="hero-navigation__step step-three"><?= $headerData['MARK_SLIDE_3_HEADER']['~VALUE'] ?></div>
+    </div>
     </div>
 </header>
 <main class="main">

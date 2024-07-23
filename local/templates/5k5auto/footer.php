@@ -10,68 +10,69 @@ $footerData = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->ge
     <div class="container">
         <div class="footer-info">
             <div class="footer-info__left">
-                <div class="footer-info__logo">
-                    <div>
-                        <?php if (!empty($footerData['LOGO_FOOTER']['VALUE'])): ?>
+                <a class="footer-info__logo">
+                    <?php if (!empty($footerData['LOGO_FOOTER']['VALUE'])): ?>
+                        <a href="<?= $footerData['LOGO_FOOTER']['DESCRIPTION'] ?>" target="_blank"
+                           rel="noopener noreferrer">
                             <img src="<?= CFile::GetPath($footerData['LOGO_FOOTER']['VALUE']) ?>" width="98" height="77"
                                  alt="<?= $footerData['LOGO_FOOTER']['DESCRIPTION'] ?>">
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <p class="footer-info__adress">
-                    <?= $footerData['ADDRESS_FOOTER']['~VALUE'] ?>
-                </p>
-                <ul class="footer-info__social">
-                    <?php foreach ($footerData['SOCNET_FOOTER']['VALUE'] as $key => $imageId): ?>
-                        <li>
-                            <a href="<?= $footerData['SOCNET_FOOTER']['DESCRIPTION'][$key] ?>" target="_blank">
-                                <img src="<?= CFile::GetPath($imageId) ?>"
-                                     alt="<?= $footerData['SOCNET_FOOTER']['DESCRIPTION'][$key] ?>">
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-            <div class="footer-info__right">
-                <?php if (!empty($footerData['BTN_TEXT_FOOTER']['~VALUE'])): ?>
-                    <button class="footer-info__order" data-src="#modal-call">
-                        <?= $footerData['BTN_TEXT_FOOTER']['~VALUE'] ?>
-                    </button>
-                <?php endif; ?>
-                <ul class="footer-info__contacts">
-                    <?php if (!empty($footerData['PHONE_FOOTER']['~VALUE'])): ?>
-                        <li><a href="tel:<?= Generic::getCleanPhoneNumber($footerData['PHONE_FOOTER']['~VALUE']) ?>"
-                               target="_blank"
-                               rel="noopener noreferrer"><?= $footerData['PHONE_FOOTER']['~VALUE'] ?></a></li>
+                        </a>
                     <?php endif; ?>
-                    <?php if (!empty($footerData['EMAIL_FOOTER']['~VALUE'])): ?>
-                        <li><a href="mailto:<?= $footerData['EMAIL_FOOTER']['~VALUE'] ?>" target="_blank"
-                               rel="noopener noreferrer"><?= $footerData['EMAIL_FOOTER']['~VALUE'] ?></a></li>
-                    <?php endif; ?>
-                </ul>
             </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="footer-copyright__left">
-                <p class="footer-copyright__text"><?= str_replace('#YEAR#', date('Y'), $footerData['COPYRIGHT_FOOTER']['~VALUE']) ?></p>
-                <ul class="footer-copyright__documentation">
-                    <?php if (!empty($footerData['POLICY_FOOTER']['VALUE'])): ?>
-                        <li>
-                            <a href="<?= CFile::GetPath($footerData['POLICY_FOOTER']['VALUE']) ?>" target="_blank"
-                               rel="noopener noreferrer"><?= $footerData['POLICY_FOOTER']['DESCRIPTION'] ?></a>
-                        </li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-            <div class="footer-copyright__right">
-                <ul class="footer-copyright__links">
+            <p class="footer-info__adress">
+                <?= $footerData['ADDRESS_FOOTER']['~VALUE'] ?>
+            </p>
+            <ul class="footer-info__social">
+                <?php foreach ($footerData['SOCNET_FOOTER']['VALUE'] as $key => $imageId): ?>
                     <li>
-                        <a href="https://d-option.ru" target="_blank" rel="noopener noreferrer">Разработано веб-студией
-                            Digital Option</a>
+                        <a href="<?= $footerData['SOCNET_FOOTER']['DESCRIPTION'][$key] ?>" target="_blank">
+                            <img src="<?= CFile::GetPath($imageId) ?>"
+                                 alt="<?= $footerData['SOCNET_FOOTER']['DESCRIPTION'][$key] ?>">
+                        </a>
                     </li>
-                </ul>
-            </div>
+                <?php endforeach; ?>
+            </ul>
         </div>
+        <div class="footer-info__right">
+            <?php if (!empty($footerData['BTN_TEXT_FOOTER']['~VALUE'])): ?>
+                <button class="footer-info__order" data-src="#modal-call">
+                    <?= $footerData['BTN_TEXT_FOOTER']['~VALUE'] ?>
+                </button>
+            <?php endif; ?>
+            <ul class="footer-info__contacts">
+                <?php if (!empty($footerData['PHONE_FOOTER']['~VALUE'])): ?>
+                    <li><a href="tel:<?= Generic::getCleanPhoneNumber($footerData['PHONE_FOOTER']['~VALUE']) ?>"
+                           target="_blank"
+                           rel="noopener noreferrer"><?= $footerData['PHONE_FOOTER']['~VALUE'] ?></a></li>
+                <?php endif; ?>
+                <?php if (!empty($footerData['EMAIL_FOOTER']['~VALUE'])): ?>
+                    <li><a href="mailto:<?= $footerData['EMAIL_FOOTER']['~VALUE'] ?>" target="_blank"
+                           rel="noopener noreferrer"><?= $footerData['EMAIL_FOOTER']['~VALUE'] ?></a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="footer-copyright__left">
+            <p class="footer-copyright__text"><?= str_replace('#YEAR#', date('Y'), $footerData['COPYRIGHT_FOOTER']['~VALUE']) ?></p>
+            <ul class="footer-copyright__documentation">
+                <?php if (!empty($footerData['POLICY_FOOTER']['VALUE'])): ?>
+                    <li>
+                        <a href="<?= CFile::GetPath($footerData['POLICY_FOOTER']['VALUE']) ?>" target="_blank"
+                           rel="noopener noreferrer"><?= $footerData['POLICY_FOOTER']['DESCRIPTION'] ?></a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="footer-copyright__right">
+            <ul class="footer-copyright__links">
+                <li>
+                    <a href="https://d-option.ru" target="_blank" rel="noopener noreferrer">Разработано веб-студией
+                        Digital Option</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     </div>
 </footer>
 <?php if (!empty($footerData['WHATSAPP_FOOTER']['VALUE'])): ?>
