@@ -16,4 +16,9 @@ $consentTextQuiz = str_replace('#TEXT_BUTTON#', '"' . $arResult['PROPERTIES']['T
 $consentTextQuiz = str_replace('#PRIVACY_POLICY#', "<a href='{$link}' target='_blank'>{$arResult['PROPERTIES']['TEXT_LINK_COMMON']['VALUE']}</a>", $consentTextQuiz);
 $consentTextCallaback = str_replace('#TEXT_BUTTON#', '"' . $arResult['PROPERTIES']['TEXT_BTN_CALLBACK']['VALUE'] . '"', $arResult['PROPERTIES']['CONSENT_TEXT_COMMON']['VALUE']);
 $consentTextCallaback = str_replace('#PRIVACY_POLICY#', "<a href='{$link}' target='_blank'>{$arResult['PROPERTIES']['TEXT_LINK_COMMON']['VALUE']}</a>", $consentTextCallaback);
-?>
+
+
+include '_promotion.php';
+include '_callback.php';
+include '_quiz.php';
+include '_ok.php';
