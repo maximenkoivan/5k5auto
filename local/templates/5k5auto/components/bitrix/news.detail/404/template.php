@@ -4,6 +4,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var $arResult
  * @global CMain $APPLICATION
  */
+$this->addExternalCss(SITE_TEMPLATE_PATH . '/assets/css/404.css');
 ?>
 <div class="absent">
     <div class="container">
