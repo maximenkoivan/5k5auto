@@ -12,6 +12,6 @@ $this->addExternalCss(SITE_TEMPLATE_PATH . '/assets/css/404.css');
             <h1 class="absent__title"><?= $arResult['PROPERTIES']['TITLE_404']['~VALUE'] ?></h1>
             <p class="absent__text"><?= $arResult['PROPERTIES']['DESC_404']['~VALUE'] ?></p>
         </div>
-        <a class="absent__btn" href="/" target="_blank" rel="noopener noreferrer"><?= $arResult['PROPERTIES']['TEXT_LINK_404']['~VALUE'] ?></a>
+        <a href="/" class="absent__btn"><?= $arResult['PROPERTIES']['TEXT_LINK_404']['~VALUE'] ?></a>
     </div>
 </div>
