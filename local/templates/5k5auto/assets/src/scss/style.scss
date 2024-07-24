@@ -1,0 +1,274 @@
+@import "normalize";
+@import "fonts";
+@import "vars";
+@import "mixins";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+
+html,
+body {
+  font-family: "Gilroy", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 130%;
+  width: 100%;
+  min-width: 360px;
+  margin: 0 auto;
+  color: $color-text;
+  background: $bg-color-default;
+  position: relative;
+  outline: none;
+  -webkit-text-size-adjust: none;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 10px;
+  margin: 0 auto;
+
+  @include breakpoint($bp-xl) {
+    max-width: 1040px;
+  }
+
+  @include breakpoint($bp-lg) {
+    max-width: 720px;
+  }
+
+  @include breakpoint($bp-sm) {
+    max-width: 360px;
+    padding: 0 10px;
+  }
+}
+
+a:hover,
+a:not(:hover),
+button:hover,
+button:not(:hover) {
+  transition: all ease-out 0.5s;
+}
+
+input[type=text],
+input[type=submit],
+textarea {
+  -webkit-appearance: none;
+}
+
+a,
+label,
+button,
+div {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input {
+  background: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.disabled {
+  pointer-events: none;
+  background: gray !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px transparent inset !important;
+  background-color: transparent !important;
+  color: inherit !important;
+  -webkit-transition: background-color 5000s;
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.select-form__input:has(input:-webkit-autofill),
+.select-form__input:has(input:-webkit-autofill:hover),
+.select-form__input:has(input:-webkit-autofill:focus),
+.select-form__input:has(input:-webkit-autofill:active),
+.form-quiz__input:has(input:-webkit-autofill),
+.form-quiz__input:has(input:-webkit-autofill:hover),
+.form-quiz__input:has(input:-webkit-autofill:focus),
+.form-quiz__input:has(input:-webkit-autofill:active) {
+  box-shadow: 0 0 0 30px transparent inset !important;
+  background-color: transparent !important;
+  color: inherit !important;
+  -webkit-transition: background-color 5000s;
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.wa-call {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  z-index: 30;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s linear;
+  overflow: hidden;
+  -webkit-animation: call-animation 2s infinite ease-out;
+  animation: call-animation 2s infinite ease-out;
+
+  @include breakpoint($bp-sm) {
+    width: 39px;
+    height: 39px;
+    left: 8px;
+  }
+}
+
+.button-up {
+  color: $white;
+  text-align: center;
+  border: 1px solid #D69977;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 30;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  visibility: hidden;
+  opacity: 0;
+  background: $bg-btn-main-hover;
+  box-shadow: 4px 38px 62px rgba(0, 0, 0, 0.5), inset 1px 2px 10px rgba(133, 133, 133, 0.80);
+  transition: all .15s ease-in-out;
+
+  &.shownBtnUp {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include breakpoint($bp-sm) {
+    width: 39px;
+    height: 39px;
+    right: 8px;
+  }
+}
+
+html.with-fancybox {
+  overflow: hidden !important;
+}
+
+.fancybox__content>.f-button.is-close-btn {
+  --f-button-svg-width: 30px !important;
+  --f-button-svg-height: 30px !important;
+  opacity: 1 !important;
+}
+
+.fancybox__container *,
+.fancybox__container *::before,
+.fancybox__container *::after {
+  box-sizing: border-box !important;
+}
+
+@include breakpoint(580px) {
+  .f-button.is-close-btn {
+    background: transparent !important;
+  }
+}
+
+@include breakpoint($bp-sm) {
+
+  [role="dialog"] .f-button.is-close-btn {
+    top: -45px !important;
+    right: 0px !important;
+    background: none;
+  }
+}
+
+@-webkit-keyframes call-animation {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotate(10deg) scale(1.1);
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  70% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes call-animation {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotate(10deg) scale(1.1);
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  70% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@-webkit-keyframes glare {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes glare {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@import "./blocks/header";
+@import "./blocks/hero";
+@import "./blocks/information";
+@import "./blocks/consultation";
+@import "./blocks/advantages";
+@import "./blocks/price-list";
+@import "./blocks/portfolio";
+@import "./blocks/application";
+@import "./blocks/reviews";
+@import "./blocks/faq";
+@import "./blocks/footer";
+
+// Модалки
+
+@import "./modals/modal-promotion";
+@import "./modals/modal-thnx";
+@import "./modals/modal-call";
+@import "./modals/modal-quiz";

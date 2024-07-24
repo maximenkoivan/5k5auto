@@ -1,0 +1,39 @@
+// Переменные
+
+$color-text: #ffffff;
+$color-link: #ffffff;
+$white: #ffffff;
+$border-color: #ffffff80;
+
+// Фоны
+
+$bg-color-default: #000000;
+$bg-btn-main: url('../images/btn_main.png') top center / cover no-repeat;
+$bg-btn-bottom: url('../images/btn_bottom.png') top center / cover no-repeat;
+$bg-btn-form: url('../images/btn_form.png') top center / cover no-repeat;
+$bg-step-active: url('../images/step_bg.png') top center / cover no-repeat;
+$bg-title: linear-gradient(225deg, #fff 0%, #cacaca 16.5%, #f3f3f3 36.35%, #ddd 50.59%, #eaeaea 66.24%, #d1d1d1 82.41%, #fff 100%);
+$bg-title-dop: linear-gradient(233deg, #f5cd89 0%, #fab498 51.96%, #e9c5af 100%);
+$bg-card: linear-gradient(137deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 100%);
+$bg-accordion: linear-gradient(137deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 100%);
+
+// hover эффекты
+
+$color-hover-link: radial-gradient(circle closest-side at 50% 50%, rgb(210, 143, 95), rgb(226, 167, 123) 50%, rgb(195, 112, 86));
+$bg-link-main-hover: linear-gradient(134deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 100%);
+$bg-btn-main-hover: url('../images/btn_main_hover.png') top center / cover no-repeat;
+$bg-btn-bottom-hover: url('../images/btn_bottom_hover.png') top center / cover no-repeat;
+$bg-btn-form-hover: url('../images/btn_form_hover.png') top center / cover no-repeat;
+$bg-btn-glare: url('../images/button_highlight.svg') no-repeat;
+
+// Кнопки
+
+$slider-left-btn: url('../images/slider_left.svg') center center / contain no-repeat;
+$slider-right-btn: url('../images/slider_right.svg') center center / contain no-repeat;
+
+// Брейки
+
+$bp-xl: 1199.98px;
+$bp-lg: 991.98px;
+$bp-md: 767.98px;
+$bp-sm: 575.98px;

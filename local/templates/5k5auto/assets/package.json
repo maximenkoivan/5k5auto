@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production",
+    "prod": "mix --production",
+    "serve": "mix watch --hot"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "laravel-mix": "^6.0.39",
+    "mix-tailwindcss": "^1.3.0",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.1.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^4.0.0"
+  },
+  "dependencies": {
+    "@fancyapps/ui": "^5.0.36",
+    "imask": "^7.6.1",
+    "jquery": "^3.7.1",
+    "swiper": "^11.1.4"
+  }
+}
