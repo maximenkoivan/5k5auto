@@ -4,7 +4,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var $arResult
  * @global CMain $APPLICATION
  */
-$fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByCode('POLICY_FOOTER')->getResult()[0] ?: ''
+$fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByCode('POLICY_FOOTER')->getResult()[0] ?: '';
+$text = \classes\Models\FiveKFiveAuto\Feedback\FormSettings::getInstance()->getPropertiesByPostfix('CONSENT')->getResult();
 ?>
 <section class="consultation">
     <div class="container">
@@ -17,11 +18,11 @@ $fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPro
                     <button class="offer__btn"
                             data-src="#modal-call"><?= $arResult['PROPERTIES']['TEXT_BTN_CONSULTATION']['~VALUE'] ?></button>
                 <?php endif; ?>
-                <?php if (!empty($arResult['PROPERTIES']['TEXT_CONSENT_CONSULTATION']['~VALUE']) && !empty($arResult['PROPERTIES']['TEXT_CONSENT_CONSULTATION']['~DESCRIPTION']) && !empty($fileId)): ?>
+                <?php if (!empty($text['TEXT_CONSENT']['~VALUE']) && !empty($text['TEXT_CONSENT']['~DESCRIPTION']) && !empty($fileId)): ?>
                     <p class="offer__text offer__text_policy">
-                        <?= $arResult['PROPERTIES']['TEXT_CONSENT_CONSULTATION']['~VALUE'] ?>
+                        <?= $text['TEXT_CONSENT']['~VALUE'] ?>
                         <a href="<?= CFile::GetPath($fileId) ?>"
-                           target="_blank"><?= $arResult['PROPERTIES']['TEXT_CONSENT_CONSULTATION']['~DESCRIPTION'] ?></a>
+                           target="_blank"><?= $text['TEXT_CONSENT']['~DESCRIPTION'] ?></a>
                     </p>
                 <?php endif; ?>
             </div>
