@@ -11,7 +11,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
         <div class="information__cards information-cards">
             <div class="information-cards__item">
                 <div class="information-cards__content">
-                    <div class="information-cards__number" id="card-years">1</div>
+                    <div class="information-cards__number" id="card-years">10+</div>
                     <p class="information-cards__text">лет на рынке</p>
                 </div>
                 <img class="information-cards__img" width="338" height="425" src="images/information-cards_1.jpg"
@@ -19,7 +19,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
             </div>
             <div class="information-cards__item">
                 <div class="information-cards__content">
-                    <div class="information-cards__number" id="card-projects">1</div>
+                    <div class="information-cards__number" id="card-projects">200+</div>
                     <p class="information-cards__text">Выполненных проектов разной сложности</p>
                 </div>
                 <img class="information-cards__img" width="338" height="425" src="images/information-cards_2.jpg"
@@ -27,7 +27,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
             </div>
             <div class="information-cards__item">
                 <div class="information-cards__content">
-                    <div class="information-cards__number" id="card-specialists">1</div>
+                    <div class="information-cards__number" id="card-specialists">14</div>
                     <p class="information-cards__text">лет на рынке</p>
                 </div>
                 <img class="information-cards__img" width="338" height="425" src="images/information-cards_3.jpg"
