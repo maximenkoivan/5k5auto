@@ -6,6 +6,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 $fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByCode('POLICY_FOOTER')->getResult()[0] ?: '';
 $formSettings = \classes\Models\FiveKFiveAuto\Feedback\FormSettings::getInstance()->getElementByCode('settings')->getResult();
+$request = \Bitrix\Main\Context::getCurrent()->getRequest();
 ?>
 <section class="application">
     <div class="container">
@@ -26,6 +27,14 @@ $formSettings = \classes\Models\FiveKFiveAuto\Feedback\FormSettings::getInstance
                     <div class="select-form__input select-form__input_phone">
                         <input type="tel" id="phone" name="phone"
                                placeholder="<?= $formSettings['PLH_1_CALLBACK']['~VALUE'] ?>">
+                    </div>
+                    <div style="display: none">
+                        <input name="form" value="<?= $formSettings['FORM_NAME_CALLBACK']['~VALUE'] ?>">
+                        <input name="utm_source" value="<?= $request->get('utm_source') ?>">
+                        <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">
+                        <input name="utm_campaign" value="<?= $request->get('utm_campaign') ?>">
+                        <input name="utm_term" value="<?= $request->get('utm_term') ?>">
+                        <input name="utm_content" value="<?= $request->get('utm_content') ?>">
                     </div>
                     <button class="select-form__btn"
                             type="submit"><?= $formSettings['TEXT_BTN_CALLBACK']['~VALUE'] ?></button>

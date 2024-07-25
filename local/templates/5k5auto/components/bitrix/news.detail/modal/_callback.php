@@ -4,6 +4,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 }
 /**
  * @var $arResult
+ * @var $request
  * @global CMain $APPLICATION
  */
 $fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByCode('POLICY_FOOTER')->getResult()[0] ?: '';
@@ -19,6 +20,7 @@ $fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPro
                 <div class="select-form__input select-form__input_phone">
                     <input type="tel" id="phone" name="phone" placeholder="<?= $arResult['PROPERTIES']['PLH_2_CALLBACK']['~VALUE'] ?>">
                 </div>
+
                 <button class="select-form__btn" type="submit"><?= $arResult['PROPERTIES']['TEXT_BTN_CALLBACK']['~VALUE'] ?></button>
             </form>
             <?php if (!empty($fileId) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~VALUE']) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~DESCRIPTION'])): ?>

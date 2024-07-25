@@ -2,11 +2,15 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+/**
+ * @var $arResult
+ * @var $request
+ * @global CMain $APPLICATION
+ */
 ?>
 <div id="modal-quiz" class="modal-quiz">
     <div class="modal-quiz__wrapper">
-        <form class="quiz-form" action="/request/feedback.php" method="POST" data-success-header="Заявка отправлена"
-              data-success-message="Спасибо за заполнение данной формы. Мы свяжемся с вами в ближайшее время.">
+        <form class="quiz-form" action="/request/feedback.php" method="POST">
             <div class="container">
                 <div class="modal-quiz__item quiz-start quiz-active">
                     <div class="modal-quiz__left">
@@ -16,7 +20,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                                                                            width="111" height="86" alt="Логотип"></a>
                             </div>
                             <p class="modal-quiz__adress">
-                                Москва, 6-Я Радиальная, 5к5<br> Режим работы: пн-вс 09:00-21:00</span>
+                                <span>Москва, 6-Я Радиальная, 5к5<br> Режим работы: пн-вс 09:00-21:00</span>
                             </p>
                         </div>
                         <ul class="modal-quiz__contacts">
@@ -143,6 +147,14 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                         <input type="tel" id="phone" name="phone" placeholder="+7 (000) 000 00 00">
                                     </div>
                                 </div>
+                            </div>
+                            <div style="display: none">
+                                <input name="form" value="<?= $arResult['PROPERTIES']['FORM_NAME_QUIZ']['~VALUE'] ?>">
+                                <input name="utm_source" value="<?= $request->get('utm_source') ?>">
+                                <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">
+                                <input name="utm_campaign" value="<?= $request->get('utm_campaign') ?>">
+                                <input name="utm_term" value="<?= $request->get('utm_term') ?>">
+                                <input name="utm_content" value="<?= $request->get('utm_content') ?>">
                             </div>
                             <div class="form-quiz__select">
                                 <button class="form-quiz__btn" type="submit">Рассчитать стоимость</button>
