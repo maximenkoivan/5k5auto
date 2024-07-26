@@ -7,7 +7,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
  * @var $request
  * @global CMain $APPLICATION
  */
-$fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByCode('POLICY_FOOTER')->getResult()[0] ?: '';
 ?>
 <div id="modal-call" class="modal-call">
     <div class="container">
@@ -33,7 +32,8 @@ $fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPro
             <?php if (!empty($fileId) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~VALUE']) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~DESCRIPTION'])): ?>
             <p class="modal-call__text modal-call__text_policy">
                 <?= $arResult['PROPERTIES']['TEXT_CONSENT']['~VALUE'] ?>
-                <a href="<?= CFile::GetPath($fileId) ?>" target="_blank" rel="noopener noreferrer"><?= $arResult['PROPERTIES']['TEXT_CONSENT']['~DESCRIPTION'] ?></a></p>
+                <a href="<?= CFile::GetPath($fileId) ?>" target="_blank" rel="noopener noreferrer"><?= $arResult['PROPERTIES']['TEXT_CONSENT']['~DESCRIPTION'] ?></a>
+            </p>
             <?php endif; ?>
         </div>
     </div>

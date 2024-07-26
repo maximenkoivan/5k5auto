@@ -1,4 +1,7 @@
 <?php
+
+use classes\Helpers\Generic;
+
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -16,25 +19,38 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                     <div class="modal-quiz__left">
                         <div class="modal-quiz__top">
                             <div class="modal-quiz__logo">
-                                <a href="#" target="_blank" rel="noopener noreferrer"><img src="images/modal-form-logo.png"
-                                                                                           width="111" height="86" alt="Логотип"></a>
+                                <?php if (!empty($arResult['PROPERTIES']['LOGO_QUIZ']['VALUE'])): ?>
+                                    <img src="<?= CFile::GetPath($arResult['PROPERTIES']['LOGO_QUIZ']['VALUE']) ?>"
+                                         width="111" height="86"
+                                         alt="<?= $arResult['PROPERTIES']['LOGO_QUIZ']['DESCRIPTION'] ?>">
+                                <?php endif; ?>
                             </div>
                             <p class="modal-quiz__adress">
-                                <span>Москва, 6-Я Радиальная, 5к5<br> Режим работы: пн-вс 09:00-21:00</span>
+                                <span><?= $arResult['PROPERTIES']['ADDRESS_QUIZ']['~VALUE'] ?></span>
                             </p>
                         </div>
                         <ul class="modal-quiz__contacts">
-                            <li><a href="tel:+79774841544" target="_blank" rel="noopener noreferrer">+7(977) 484-15-44</a></li>
-                            <li><a href="mailto:info@auto5k5.ru" target="_blank" rel="noopener noreferrer">info@auto5k5.ru</a></li>
+                            <li>
+                                <a href="tel:<?= Generic::getCleanPhoneNumber($arResult['PROPERTIES']['PHONE_QUIZ']['~VALUE']) ?>"><?= $arResult['PROPERTIES']['PHONE_QUIZ']['~VALUE'] ?></a>
+                            </li>
+                            <li>
+                                <a href="mailto:<?= $arResult['PROPERTIES']['EMAIL_QUIZ']['~VALUE'] ?>"><?= $arResult['PROPERTIES']['EMAIL_QUIZ']['~VALUE'] ?></a>
+                            </li>
                         </ul>
-                        <h2 class="modal-quiz__title">Пройдите тест, чтобы<br> узнать целесообразность<br> оклейки вашего авто
+                        <h2 class="modal-quiz__title">
+                            <?= $arResult['PROPERTIES']['TITLE_QUIZ']['~VALUE'] ?>
                         </h2>
-                        <p class="modal-quiz__text">После прохождения теста, вы в кратчайшие сроки получите информацию о сроках,
-                            стоимости и целесообразности оклейки.</p>
-                        <div class="modal-quiz__btn">Пройти</div>
+                        <p class="modal-quiz__text">
+                            <?= $arResult['PROPERTIES']['SUBTITLE_QUIZ']['~VALUE'] ?>
+                        </p>
+                        <div class="modal-quiz__btn"><?= $arResult['PROPERTIES']['TEXT_BTN_1_QUIZ']['~VALUE'] ?></div>
                     </div>
                     <div class="modal-quiz__right">
-                        <img width="480" height="680" src="images/modal-quiz-img.jpg" alt="Клейщик">
+                        <?php if (!empty($arResult['PROPERTIES']['IMAGE_QUIZ']['VALUE'])): ?>
+                            <img width="480" height="680"
+                                 src="<?= CFile::GetPath($arResult['PROPERTIES']['IMAGE_QUIZ']['VALUE']) ?>"
+                                 alt="<?= CFile::GetPath($arResult['PROPERTIES']['IMAGE_QUIZ']['DESCRIPTION']) ?>">
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-quiz__item quiz-1">
@@ -42,22 +58,24 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <div class="modal-quiz__progress">
                             <div class="progress-line"></div>
                         </div>
-                        <h2 class="modal-quiz__title">Сколько лет вашему автомобилю?</h2>
+                        <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_1_1_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <label class="checkbox-element">Менее 1 года <input type="radio" value="Менее 1 года" name="auto-age">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox-element">От 1 до 3 лет <input type="radio" value="От 1 до 3 лет" name="auto-age">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox-element">Больше 3 лет <input type="radio" value="Больше 3 лет" name="auto-age">
-                                <span class="checkmark"></span>
-                            </label>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_1_1_QUIZ']['~VALUE'] as $answer): ?>
+                                <label class="checkbox-element">
+                                    <?= $answer ?>
+                                    <input type="radio" value="<?= $answer ?>" name="auto-age">
+                                    <span class="checkmark"></span>
+                                </label>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <div class="modal-quiz__bottom">
-                        <div class="modal-quiz__btn disabled">Далее</div>
-                        <img src="images/modal_car.png" width="760" height="430" alt="Машина">
+                        <div class="modal-quiz__btn disabled"><?= $arResult['PROPERTIES']['TEXT_BTN_2_QUIZ']['~VALUE'] ?></div>
+                        <?php if (!empty($arResult['PROPERTIES']['IMAGE_STEP_1_1_QUIZ']['VALUE'])): ?>
+                            <img src="<?= CFile::GetPath($arResult['PROPERTIES']['IMAGE_STEP_1_1_QUIZ']['VALUE']) ?>"
+                                 width="760" height="430"
+                                 alt="<?= $arResult['PROPERTIES']['IMAGE_STEP_1_1_QUIZ']['DESCRIPTION'] ?>">
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-quiz__item quiz-2">
@@ -65,23 +83,24 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <div class="modal-quiz__progress">
                             <div class="progress-line"></div>
                         </div>
-                        <h2 class="modal-quiz__title">Какова стоимость вашего автомобиля?</h2>
+                        <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_2_2_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <label class="checkbox-element">Менее 2 млн. <input type="radio" value="Менее 2 млн." name="auto-price">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox-element">От 2 до 4 млн. <input type="radio" value="От 2 до 4 млн."
-                                                                                  name="auto-price">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox-element">Более 4 млн. <input type="radio" value="Более 4 млн." name="auto-price">
-                                <span class="checkmark"></span>
-                            </label>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_2_2_QUIZ']['~VALUE'] as $answer): ?>
+                                <label class="checkbox-element">
+                                    <?= $answer ?>
+                                    <input type="radio" value="<?= $answer ?>" name="auto-price">
+                                    <span class="checkmark"></span>
+                                </label>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <div class="modal-quiz__bottom">
-                        <div class="modal-quiz__btn disabled">Далее</div>
-                        <img src="images/modal_car.png" width="760" height="430" alt="Машина">
+                        <div class="modal-quiz__btn disabled"><?= $arResult['PROPERTIES']['TEXT_BTN_2_QUIZ']['~VALUE'] ?></div>
+                        <?php if (!empty($arResult['PROPERTIES']['IMAGE_STEP_2_2_QUIZ']['VALUE'])): ?>
+                            <img src="<?= CFile::GetPath($arResult['PROPERTIES']['IMAGE_STEP_2_2_QUIZ']['VALUE']) ?>"
+                                 width="760" height="430"
+                                 alt="<?= $arResult['PROPERTIES']['IMAGE_STEP_2_2_QUIZ']['DESCRIPTION'] ?>">
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-quiz__item quiz-3">
@@ -89,23 +108,24 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <div class="modal-quiz__progress">
                             <div class="progress-line"></div>
                         </div>
-                        <h2 class="modal-quiz__title">Как часто вы ездите на машине?</h2>
+                        <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_3_2_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <label class="checkbox-element">Каждый день <input type="radio" value="Каждый день" name="auto-use">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox-element">1-2 раза в неделю <input type="radio" value="1-2 раза в неделю"
-                                                                                     name="auto-use">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox-element">Редко <input type="radio" value="Редко" name="auto-use">
-                                <span class="checkmark"></span>
-                            </label>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_3_2_QUIZ']['~VALUE'] as $answer): ?>
+                                <label class="checkbox-element">
+                                    <?= $answer ?>
+                                    <input type="radio" value="<?= $answer ?>" name="auto-use">
+                                    <span class="checkmark"></span>
+                                </label>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <div class="modal-quiz__bottom">
-                        <div class="modal-quiz__btn disabled">Далее</div>
-                        <img src="images/modal_car.png" width="760" height="430" alt="Машина">
+                        <div class="modal-quiz__btn disabled"><?= $arResult['PROPERTIES']['TEXT_BTN_2_QUIZ']['~VALUE'] ?></div>
+                        <?php if (!empty($arResult['PROPERTIES']['IMAGE_STEP_3_2_QUIZ']['VALUE'])): ?>
+                            <img src="<?= CFile::GetPath($arResult['PROPERTIES']['IMAGE_STEP_3_2_QUIZ']['VALUE']) ?>"
+                                 width="760" height="430"
+                                 alt="<?= $arResult['PROPERTIES']['IMAGE_STEP_3_2_QUIZ']['DESCRIPTION'] ?>">
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-quiz__item quiz-4">
@@ -113,19 +133,24 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <div class="modal-quiz__progress">
                             <div class="progress-line"></div>
                         </div>
-                        <h2 class="modal-quiz__title">Вы планируете продать свой автомобиль максимально выгодно?</h2>
+                        <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_4_2_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <label class="checkbox-element">ДА <input type="radio" value="Да" name="auto-sell">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox-element">НЕТ <input type="radio" value="Нет" name="auto-sell">
-                                <span class="checkmark"></span>
-                            </label>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_4_2_QUIZ']['~VALUE'] as $answer): ?>
+                                <label class="checkbox-element">
+                                    <?= $answer ?>
+                                    <input type="radio" value="<?= $answer ?>" name="auto-sell">
+                                    <span class="checkmark"></span>
+                                </label>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <div class="modal-quiz__bottom">
-                        <div class="modal-quiz__btn disabled">Далее</div>
-                        <img src="images/modal_car.png" width="760" height="430" alt="Машина">
+                        <div class="modal-quiz__btn disabled"><?= $arResult['PROPERTIES']['TEXT_BTN_2_QUIZ']['~VALUE'] ?></div>
+                        <?php if (!empty($arResult['PROPERTIES']['IMAGE_STEP_4_2_QUIZ']['VALUE'])): ?>
+                            <img src="<?= CFile::GetPath($arResult['PROPERTIES']['IMAGE_STEP_4_2_QUIZ']['VALUE']) ?>"
+                                 width="760" height="430"
+                                 alt="<?= $arResult['PROPERTIES']['IMAGE_STEP_4_2_QUIZ']['DESCRIPTION'] ?>">
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-quiz__item quiz-finish">
@@ -136,15 +161,41 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <h2 class="modal-quiz__title" id="quiz-finish-title"></h2>
                         <p class="modal-quiz__text" id="quiz-finish-text"></p>
                         <div class="modal-quiz__form form-quiz">
+                            <div style="display: none">
+                                <div id="ending-title-1">
+                                    <?= $arResult['PROPERTIES']['TITLE_END_1_QUIZ']['~VALUE'] ?>
+                                </div>
+                                <div id="ending-text-1">
+                                    <?= $arResult['PROPERTIES']['TEXT_END_1_QUIZ']['~VALUE'] ?>
+                                </div>
+                                <div id="ending-title-2">
+                                    <?= $arResult['PROPERTIES']['TITLE_END_2_QUIZ']['~VALUE'] ?>
+                                </div>
+                                <div id="ending-text-2">
+                                    <?= $arResult['PROPERTIES']['TEXT_END_2_QUIZ']['~VALUE'] ?>
+                                </div>
+                                <div id="ending-title-3">
+                                    <?= $arResult['PROPERTIES']['TITLE_END_3_QUIZ']['~VALUE'] ?>
+                                </div>
+                                <div id="ending-text-3">
+                                    <?= $arResult['PROPERTIES']['TEXT_END_3_QUIZ']['~VALUE'] ?>
+                                </div>
+                                <div id="ending-title-4">
+                                    <?= $arResult['PROPERTIES']['TITLE_END_4_QUIZ']['~VALUE'] ?>
+                                </div>
+                                <div id="ending-text-4">
+                                    <?= $arResult['PROPERTIES']['TEXT_END_4_QUIZ']['~VALUE'] ?>
+                                </div>
+                            </div>
                             <div class="form-quiz__inputs">
                                 <div class="form-quiz__inputs-w">
                                     <div class="form-quiz__input form-quiz__input_name">
-                                        <input type="text" id="name" name="name" placeholder="Имя">
+                                        <input type="text" id="name" name="name" placeholder="<?= $arResult['PROPERTIES']['PLH_1_QUIZ']['~VALUE'] ?>">
                                     </div>
                                 </div>
                                 <div class="form-quiz__inputs-w">
                                     <div class="form-quiz__input form-quiz__input_phone">
-                                        <input type="tel" id="phone" name="phone" placeholder="+7 (000) 000 00 00">
+                                        <input type="tel" id="phone" name="phone" placeholder="<?= $arResult['PROPERTIES']['PLH_2_QUIZ']['~VALUE'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -157,12 +208,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                 <input name="utm_content" value="<?= $request->get('utm_content') ?>">
                             </div>
                             <div class="form-quiz__select">
-                                <button class="form-quiz__btn" type="submit">Рассчитать стоимость</button>
-                                <p class="form-quiz__text">Нажимая на данную кнопку, вы даете
-                                    согласие на обработку персональных
-                                    данных и подтверждает факт ознакомления с действующей <a href="#" target="_blank"
-                                                                                             rel="noopener noreferrer">Политикой
-                                        конфиденциальности.</a></p>
+                                <button class="form-quiz__btn" type="submit"><?= $arResult['PROPERTIES']['TEXT_BTN_3_QUIZ']['~VALUE'] ?></button>
+                                <?php if (!empty($fileId) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~VALUE']) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~DESCRIPTION'])): ?>
+                                <p class="form-quiz__text">
+                                    <?= $arResult['PROPERTIES']['TEXT_CONSENT']['~VALUE'] ?>
+                                    <a href="<?= CFile::GetPath($fileId) ?>" target="_blank" rel="noopener noreferrer"><?= $arResult['PROPERTIES']['TEXT_CONSENT']['~DESCRIPTION'] ?></a>
+                                </p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

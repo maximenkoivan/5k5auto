@@ -8,7 +8,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
  * @global CMain $APPLICATION
  */
 ?>
-<div id="modal-promotion" class="modal-promotion">
+<div id="modal-promotion" class="modal-promotion" data-time-open="<?= abs(intval($arResult['PROPERTIES']['TIME_SHOW_PROMOTION']['VALUE'])) ?>">
     <div class="container">
         <div class="modal-promotion__img">
             <?php if (!empty($arResult['PROPERTIES']['IMAGE_PROMOTION']['VALUE'])): ?>
