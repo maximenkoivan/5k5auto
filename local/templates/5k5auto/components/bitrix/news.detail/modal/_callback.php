@@ -20,7 +20,14 @@ $fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPro
                 <div class="select-form__input select-form__input_phone">
                     <input type="tel" id="phone" name="phone" placeholder="<?= $arResult['PROPERTIES']['PLH_2_CALLBACK']['~VALUE'] ?>">
                 </div>
-
+                <div style="display: none">
+                    <input name="form" value="<?=  $arResult['PROPERTIES']['FORM_NAME_CALLBACK']['~VALUE'] ?>">
+                    <input name="utm_source" value="<?= $request->get('utm_source') ?>">
+                    <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">
+                    <input name="utm_campaign" value="<?= $request->get('utm_campaign') ?>">
+                    <input name="utm_term" value="<?= $request->get('utm_term') ?>">
+                    <input name="utm_content" value="<?= $request->get('utm_content') ?>">
+                </div>
                 <button class="select-form__btn" type="submit"><?= $arResult['PROPERTIES']['TEXT_BTN_CALLBACK']['~VALUE'] ?></button>
             </form>
             <?php if (!empty($fileId) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~VALUE']) && !empty($arResult['PROPERTIES']['TEXT_CONSENT']['~DESCRIPTION'])): ?>
