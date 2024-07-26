@@ -28,11 +28,11 @@ $reviews = \classes\Models\FiveKFiveAuto\Content\Reviews::getInstance()->getElem
                                                 <div class="card-img__avatar">
                                                     <img class="card-img__user" width="130" height="130"
                                                          src="<?= CFile::GetPath($review['PHOTO_AUTHOR']['VALUE']) ?>"
-                                                         alt="<?= $review['PHOTO_AUTHOR']['DESCRIPTION'] ?>">
+                                                         alt="<?= $review['NAME_AUTHOR']['VALUE'] ?>">
                                                 </div>
                                             <?php endif; ?>
                                         </div>
-                                        <h3 class="reviews-card__title"><?= $review['PHOTO_AUTHOR']['DESCRIPTION'] ?></h3>
+                                        <h3 class="reviews-card__title"><?= $review['NAME_AUTHOR']['VALUE'] ?></h3>
                                         <p class="reviews-card__text">
                                             <?= $review['~PREVIEW_TEXT'] ?>
                                         </p>
