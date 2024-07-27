@@ -4,12 +4,15 @@ namespace classes\Models\FiveKFiveAuto\Feedback;
 
 use classes\Models\Base\Iblock;
 
-class CalculateCost extends Iblock
+class Quiz extends Iblock
 {
     protected const IBLOCK_TYPE_CODE = '5k5auto';
 
+    protected const IBLOCK_CODE = 'quiz';
+    private const EVENT_NAME = '5K5_QUIZ_FORM';
+
     private array $formFields = [
-        'formName' => [
+        'name' => [
             'ru' => '""Имя"',
             'en' => 'Name',
             'rules' => 'required|min:2|max:50',
@@ -17,7 +20,7 @@ class CalculateCost extends Iblock
             'property' => false,
             'store' => 'NAME'
         ],
-        'formPhone' => [
+        'phone' => [
             'ru' => '"Номер телефона"',
             'en' => '',
             'rules' => 'required|phone|max:50',
@@ -25,104 +28,38 @@ class CalculateCost extends Iblock
             'property' => true,
             'store' => 'PHONE'
         ],
-        'place' => [
-            'ru' => 'Место нахождения объекта',
+        'auto-age' => [
+            'ru' => 'Сколько лет вашему автомобилю',
             'en' => '',
-            'rules' => 'max:100',
+            'rules' => 'max:50',
             'value' => '',
             'property' => true,
-            'store' => 'PLACE'
+            'store' => 'AGE'
         ],
-        'services' => [
-            'ru' => 'Тип услуги',
+        'auto-price' => [
+            'ru' => 'Какова стоимость вашего автомобиля',
             'en' => '',
-            'rules' => 'max:100',
+            'rules' => 'max:50',
             'value' => '',
             'property' => true,
-            'store' => 'SERVICES'
+            'store' => 'PRICE'
         ],
-        'buildingType' => [
-            'ru' => 'Тип здания',
+        'auto-use' => [
+            'ru' => 'Как часто вы ездите на машине',
             'en' => '',
-            'rules' => 'max:100',
+            'rules' => 'max:50',
             'value' => '',
             'property' => true,
-            'store' => 'BUILD_TYPE'
+            'store' => 'USE'
         ],
-        'numberFloor' => [
-            'ru' => 'Номер этажа',
+        'auto-sell' => [
+            'ru' => 'Вы планируете продать свой автомобиль максимально выгодно',
             'en' => '',
-            'rules' => 'max:100',
+            'rules' => 'max:50',
             'value' => '',
             'property' => true,
-            'store' => 'NUMBER_FLOOR'
+            'store' => 'SELL'
         ],
-        'totalFloor' => [
-            'ru' => 'Всего этажей',
-            'en' => '',
-            'rules' => 'max:100',
-            'value' => '',
-            'property' => true,
-            'store' => 'TOTAL_FLOOR'
-        ],
-        'typeWork' => [
-            'ru' => 'Тип работ',
-            'en' => '',
-            'rules' => 'max:100',
-            'value' => '',
-            'property' => true,
-            'store' => 'TYPE_WORK'
-        ],
-        'totalCount' => [
-            'ru' => 'Общее количество стеклопакетов',
-            'en' => '',
-            'rules' => 'max:10',
-            'value' => '',
-            'property' => true,
-            'store' => 'TOTAL_COUNT'
-        ],
-        'lift' => [
-            'ru' => 'Подъем негабаритных грузов',
-            'en' => '',
-            'rules' => 'max:100',
-            'value' => '',
-            'property' => true,
-            'store' => 'LIFT'
-        ],
-        // вторая часть квиза
-        'itemsNumber' => [
-            'ru' => 'Количество предметов',
-            'en' => '',
-            'rules' => 'max:10',
-            'value' => '',
-            'property' => true,
-            'store' => 'ITEMS_NUMBER'
-        ],
-        'weight' => [
-            'ru' => 'Вес самого тяжелого предмета',
-            'en' => '',
-            'rules' => 'max:100',
-            'value' => '',
-            'property' => true,
-            'store' => 'WEIGHT'
-        ],
-        'floor' => [
-            'ru' => 'Сколько этажей до крыши',
-            'en' => '',
-            'rules' => 'max:100',
-            'value' => '',
-            'property' => true,
-            'store' => 'FLOOR_COUNT'
-        ],
-        'cover' => [
-            'ru' => 'Тип кровли дома',
-            'en' => '',
-            'rules' => 'max:100',
-            'value' => '',
-            'property' => true,
-            'store' => 'COVER'
-        ],
-
 //        'recaptcha_response' => [
 //            'ru' => 'recaptcha',
 //            'en' => 'recaptcha',
@@ -130,9 +67,6 @@ class CalculateCost extends Iblock
 //            'value' => ''
 //        ],
     ];
-    protected const IBLOCK_CODE = 'order';
-
-    private const EVENT_NAME = 'ORDER_FORM';
 
     /**
      * Возвращает массив полей
@@ -163,14 +97,17 @@ class CalculateCost extends Iblock
      * массив для создания почтового события
      * @return array
      */
-    public function getMailFields(): array
+    public function getMailFields($elementId): array
     {
         $fields = $this->getFieldsForMail();
+
+        $files = $this->getPropertiesByElementId($elementId, ['PROPERTY_TYPE' => 'F']);
 
         return [
             "EVENT_NAME" => self::EVENT_NAME,
             "LID" => SITE_ID,
             "C_FIELDS" => $fields,
+            "FILE" => array_column($files, 'VALUE')
         ];
     }
 
@@ -182,7 +119,15 @@ class CalculateCost extends Iblock
     {
         $result = [];
         foreach ($this->formFields as $field) {
-            $result[$field['store']] = $field['value'];
+            if (is_array($field['value']) && $field['type'] != ['file']) {
+                $text = '<br>';
+                foreach ($field['value'] as $key => $value) {
+                    $postfix = array_key_last($field['value']) == $key ? '' : ' <br> ';
+                    $text .= $value . $postfix;
+                }
+                $field['value'] = $text;
+            }
+            $result[$field['store']] = $field['type'] !== 'file' ? $field['value'] : '';
         }
         return $result;
     }

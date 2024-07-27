@@ -209,6 +209,9 @@ class Validator
             case 'min':
                 $message = $this->errorMessages['min'][LANGUAGE_ID];
                 break;
+            case 'max':
+                $message = $this->errorMessages['max'][LANGUAGE_ID];
+                break;
             case 'inn':
                 $message = $this->errorMessages['inn'][LANGUAGE_ID];
                 break;

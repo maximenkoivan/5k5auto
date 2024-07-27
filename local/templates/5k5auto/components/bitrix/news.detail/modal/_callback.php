@@ -20,6 +20,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                     <input type="tel" id="phone" name="phone" placeholder="<?= $arResult['PROPERTIES']['PLH_2_CALLBACK']['~VALUE'] ?>">
                 </div>
                 <div style="display: none">
+                    <input name="ajax" value="callback">
                     <input name="form" value="<?=  $arResult['PROPERTIES']['FORM_NAME_CALLBACK']['~VALUE'] ?>">
                     <input name="utm_source" value="<?= $request->get('utm_source') ?>">
                     <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">

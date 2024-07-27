@@ -88,6 +88,18 @@ trait Property
         return $this;
     }
 
+    public  function getPropertiesByElementId($elementId, $filter = []): array
+    {
+        $result = [];
+        $obResult = CIBlockElement::GetProperty($this->getIblockId(), $elementId, false, false, $filter);
+        if ($obResult) {
+            while ($prop = $obResult->GetNext()) {
+                $result[] = $prop;
+            }
+        }
+        return $result;
+    }
+
     /**
      * Устанавливает или обновляет свойство по id элемента
      * @param $elementId

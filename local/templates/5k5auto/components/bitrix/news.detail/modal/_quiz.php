@@ -200,6 +200,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                 </div>
                             </div>
                             <div style="display: none">
+                                <input name="ajax" value="quiz">
                                 <input name="form" value="<?= $arResult['PROPERTIES']['FORM_NAME_QUIZ']['~VALUE'] ?>">
                                 <input name="utm_source" value="<?= $request->get('utm_source') ?>">
                                 <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">

@@ -527,7 +527,7 @@ $(document).on('submit', 'form', function (event) {
       error: function () {
         form.find('.error-message').remove(); // Удаление существующих сообщений об ошибках
         if (!form.find('.server-error').length) {
-          form.find('[type="submit"]').before('<div class="error-message server-error">Произошла ошибка сервера</div>');
+          console.log('Произошла ошибка сервера');
         }
       }
     });

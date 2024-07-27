@@ -4,15 +4,15 @@ namespace classes\Models\FiveKFiveAuto\Feedback;
 
 use classes\Models\Base\Iblock;
 
-class Feedback extends Iblock
+class Callback extends Iblock
 {
     protected const IBLOCK_TYPE_CODE = '5k5auto';
 
-    protected const IBLOCK_CODE = 'feedback';
+    protected const IBLOCK_CODE = 'callback';
     private const EVENT_NAME = '5K5_CALLBACK_FORM';
 
     private array $formFields = [
-        'formName' => [
+        'name' => [
             'ru' => '""Имя"',
             'en' => 'Name',
             'rules' => 'required|min:2|max:50',
@@ -20,7 +20,7 @@ class Feedback extends Iblock
             'property' => false,
             'store' => 'NAME'
         ],
-        'formPhone' => [
+        'phone' => [
             'ru' => '"Номер телефона"',
             'en' => '',
             'rules' => 'required|phone|max:50',
@@ -65,14 +65,17 @@ class Feedback extends Iblock
      * массив для создания почтового события
      * @return array
      */
-    public function getMailFields(): array
+    public function getMailFields($elementId): array
     {
         $fields = $this->getFieldsForMail();
+
+        $files = $this->getPropertiesByElementId($elementId, ['PROPERTY_TYPE' => 'F']);
 
         return [
             "EVENT_NAME" => self::EVENT_NAME,
             "LID" => SITE_ID,
             "C_FIELDS" => $fields,
+            "FILE" => array_column($files, 'VALUE')
         ];
     }
 
@@ -84,7 +87,15 @@ class Feedback extends Iblock
     {
         $result = [];
         foreach ($this->formFields as $field) {
-            $result[$field['store']] = $field['value'];
+            if (is_array($field['value']) && $field['type'] != ['file']) {
+                $text = '<br>';
+                foreach ($field['value'] as $key => $value) {
+                    $postfix = array_key_last($field['value']) == $key ? '' : ' <br> ';
+                    $text .= $value . $postfix;
+                }
+                $field['value'] = $text;
+            }
+            $result[$field['store']] = $field['type'] !== 'file' ? $field['value'] : '';
         }
         return $result;
     }

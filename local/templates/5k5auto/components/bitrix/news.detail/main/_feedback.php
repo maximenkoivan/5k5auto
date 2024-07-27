@@ -29,6 +29,7 @@ $request = \Bitrix\Main\Context::getCurrent()->getRequest();
                                placeholder="<?= $formSettings['PLH_1_CALLBACK']['~VALUE'] ?>">
                     </div>
                     <div style="display: none">
+                        <input name="ajax" value="callback">
                         <input name="form" value="<?= $formSettings['FORM_NAME_CALLBACK']['~VALUE'] ?>">
                         <input name="utm_source" value="<?= $request->get('utm_source') ?>">
                         <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">

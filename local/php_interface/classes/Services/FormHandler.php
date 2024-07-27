@@ -13,8 +13,8 @@ use CModule;
 class FormHandler
 {
     private $modelList = [
-        'feedback' => 'classes\Models\ReplaceGlazing\Feedback\Feedback',
-        'calculate' => 'classes\Models\ReplaceGlazing\Feedback\CalculateCost',
+        'callback' => 'classes\Models\FiveKFiveAuto\Feedback\Callback',
+        'quiz' => 'classes\Models\FiveKFiveAuto\Feedback\Quiz',
     ];
 
     private mixed $model;
@@ -99,29 +99,30 @@ class FormHandler
         $storeFields['PROPERTY_VALUES'] = $this->model->getPropertiesForSave();
         $elementId = $this->element->Add($storeFields, false, false, false);
         if (!empty($elementId)) {
-            $fields = $this->sendMail();
+            $this->sendMail($elementId);
             $telegram = new TelegramBot();
-            $telegram->sendMessage($this->prepereMessageTelegram($this->fields));
+            $telegram->sendMessage($this->prepereMessageTelegram());
         }
     }
 
     /**
      * Отправляет Email
+     * @param $elementId
+     * @return void
      */
-    private function sendMail(): array
+    private function sendMail($elementId): void
     {
-        $fields = [];
-        if (!$this->model->getEventName() || empty($fields = $this->model->getMailFields())) return $fields;
+        if (!$this->model->getEventName()) return;
+        $fields = $this->model->getMailFields($elementId);
+        if (empty($fields)) return;
         Event::send($fields);
-        return $fields;
     }
 
     /**
      * Подготавливает сообщение для телеграм
-     * @param array $fields
      * @return string
      */
-    private function prepereMessageTelegram(array $fields): string
+    private function prepereMessageTelegram(): string
     {
         $message = '';
         foreach ($this->fields as $field) {
