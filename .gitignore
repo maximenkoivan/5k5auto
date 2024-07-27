@@ -204,5 +204,12 @@ robots.txt
 
 composer.lock
 package-lock.json
+404.css
+404.css.map
+style.css
+style.css.map
+script.js
+script.js.LICENSE.txt
+script.js.map
 /.cache
 /.config
