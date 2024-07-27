@@ -1,0 +1,360 @@
+.reviews {
+  position: relative;
+  z-index: 6;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 1188px;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('../images/application_bg.png') top center / cover no-repeat;
+    position: absolute;
+    z-index: 5;
+  }
+
+  .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    z-index: 7;
+  }
+
+  &__title {
+    font-family: "Radiotechnika";
+    font-size: 76px;
+    line-height: 140%;
+    text-transform: uppercase;
+    background: $bg-title;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 60px;
+  }
+
+  &-card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px 20px 15px;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      -webkit-backdrop-filter: blur(42px);
+      backdrop-filter: blur(42px);
+      border: 1px solid $border-color;
+      background: $bg-card;
+      opacity: 0.5;
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    &__content {
+      flex-grow: 1;
+    }
+
+    &__img {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .card-img {
+      &__car {
+        width: 550px;
+        height: 356px;
+        border-radius: 20px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: top center;
+        object-position: top center;
+      }
+
+      &__avatar {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        z-index: 1;
+        padding: 10px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          -webkit-backdrop-filter: blur(42px);
+          backdrop-filter: blur(42px);
+          border: 1px solid $border-color;
+          background: $bg-card;
+          opacity: 0.5;
+          border-radius: 50%;
+          z-index: -1;
+        }
+
+        img {
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          -o-object-fit: cover;
+          object-fit: cover;
+          -o-object-position: top center;
+          object-position: top center;
+          border: 1px solid rgba(255, 255, 255, 0.5019607843);
+        }
+      }
+    }
+
+    &__title {
+      font-family: "Radiotechnika";
+      font-size: 33px;
+      line-height: 140%;
+      text-transform: uppercase;
+      background: $bg-title;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 9px;
+    }
+
+    &__text {
+      line-height: 150%;
+    }
+
+    &__signature {
+      font-family: "Radiotechnika";
+      line-height: 140%;
+      text-transform: uppercase;
+      background: linear-gradient(233deg, #f5cd89 0%, #fab498 51.96%, #e9c5af 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 30px;
+    }
+  }
+
+  .swiper-button-prev {
+    background: none;
+    outline: none;
+    box-shadow: none;
+    width: auto;
+    left: var(--swiper-navigation-sides-offset, -127px);
+    top: var(--swiper-navigation-top-offset, 58%);
+
+    &:focus,
+    &:hover,
+    &:focus-visible {
+      box-shadow: none;
+      border: none;
+      outline: none;
+    }
+
+    &::after {
+      content: '';
+      width: 106px;
+      height: 106px;
+      background: $slider-left-btn;
+    }
+
+  }
+
+  .swiper-button-next {
+    background: none;
+    outline: none;
+    box-shadow: none;
+    width: auto;
+    right: var(--swiper-navigation-sides-offset, -127px);
+    top: var(--swiper-navigation-top-offset, 58%);
+
+    &:focus,
+    &:hover,
+    &:focus-visible {
+      box-shadow: none;
+      border: none;
+      outline: none;
+    }
+
+    &::after {
+      content: '';
+      width: 106px;
+      height: 106px;
+      background: $slider-right-btn;
+    }
+  }
+
+  @include breakpoint(1480px) {
+    .container {
+      max-width: 860px;
+    }
+
+    .card-img {
+      &__car {
+        width: 380px;
+        height: 240px;
+      }
+
+      &__avatar {
+
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(1140px) {
+    .container {
+      max-width: 720px;
+    }
+
+    .card-img {
+      &__car {
+        width: 310px;
+        height: 210px;
+      }
+
+      &__avatar {
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($bp-lg) {
+    .container {
+      max-width: 720px;
+      padding-top: 35px;
+      padding-bottom: 200px;
+    }
+
+    &__title {
+      font-size: 59px;
+      margin-bottom: 50px;
+    }
+
+    .swiper-button-prev {
+
+      left: var(--swiper-navigation-sides-offset, 28%);
+      top: var(--swiper-navigation-top-offset, 90%);
+
+    }
+
+    .swiper-button-next {
+      right: var(--swiper-navigation-sides-offset, 28%);
+      top: var(--swiper-navigation-top-offset, 90%);
+    }
+
+    .card-img {
+      &__car {
+        width: 100%;
+        height: 356px;
+      }
+
+      &__avatar {
+
+        img {
+          width: 130px;
+          height: 130px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($bp-sm) {
+    .container {
+      max-width: 360px;
+      padding-top: 20px;
+      padding-bottom: 110px;
+    }
+
+    &::after {
+      top: -60%;
+    }
+
+    &__title {
+      font-size: 29px;
+      margin-bottom: 30px;
+    }
+
+    &-card {
+      padding: 10px;
+
+      &::before {
+        -webkit-backdrop-filter: blur(25px);
+        backdrop-filter: blur(25px);
+        border-radius: 12px;
+      }
+
+      &__img {
+        margin-bottom: 20px;
+      }
+
+      &__title {
+        font-size: 19px;
+        margin-bottom: 5px;
+      }
+
+      &__text {
+        font-size: 13px;
+      }
+
+      &__signature {
+        font-size: 13px;
+        margin-top: 18px;
+      }
+    }
+
+    .card-img {
+      &__car {
+        width: 320px;
+        height: 214px;
+        border-radius: 12px;
+      }
+
+      &__avatar {
+        right: 9px;
+        top: 9px;
+        padding: 6px;
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+
+    .swiper-button-prev {
+
+      left: var(--swiper-navigation-sides-offset, 31%);
+      top: var(--swiper-navigation-top-offset, 93%);
+
+      &::after {
+        width: 57px;
+        height: 57px;
+      }
+
+    }
+
+    .swiper-button-next {
+      right: var(--swiper-navigation-sides-offset, 31%);
+      top: var(--swiper-navigation-top-offset, 93%);
+
+      &::after {
+        width: 57px;
+        height: 57px;
+      }
+    }
+  }
+}

@@ -1,0 +1,249 @@
+.faq {
+  position: relative;
+  z-index: 6;
+
+  .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  &__title {
+    font-family: "Radiotechnika";
+    font-size: 76px;
+    line-height: 140%;
+    text-transform: uppercase;
+    background: $bg-title;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 50px;
+  }
+
+  .accordion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 20px;
+
+    &__button {
+      width: 100%;
+      height: 100%;
+      font-size: 23px;
+      line-height: 150%;
+      color: $white;
+      text-align: left;
+      padding: 28px 75px 28px 34px;
+      border-radius: 90px;
+      border: none;
+      outline: none;
+      transition: 0.5s;
+      cursor: pointer;
+      position: relative;
+      background: transparent;
+      z-index: 1;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        -webkit-backdrop-filter: blur(39px);
+        backdrop-filter: blur(39px);
+        background: $bg-accordion;
+        opacity: 0.5;
+        border-radius: 90px;
+        z-index: -1;
+      }
+
+      &::after {
+        content: "";
+        width: 57px;
+        height: 57px;
+        background: url('../images/accordion_open.svg') no-repeat;
+        background-size: contain;
+        top: 18px;
+        right: 17px;
+        position: absolute;
+        z-index: 2;
+        transition: 0.5s;
+      }
+    }
+
+    .active {
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    &__item {
+      position: relative;
+      height: 100%;
+
+      &:nth-child(5),
+      &:nth-child(6) {
+        .accordion__button {
+          &::after {
+            top: 49px;
+          }
+        }
+      }
+    }
+
+    &__content {
+      padding: 0 35px 0 20px;
+      margin-top: 20px;
+      background: transparent;
+      max-height: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      transition: max-height 0.1s ease-out;
+      position: absolute;
+      z-index: 2;
+      border: 1px solid transparent;
+
+      p {
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    }
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include breakpoint($bp-xl) {
+    .accordion {
+      &__button {
+        font-size: 18px;
+      }
+
+      &__content {
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($bp-lg) {
+
+    .container {
+      padding-top: 50px;
+      padding-bottom: 35px;
+    }
+
+    &__title {
+      font-size: 59px;
+    }
+
+    .accordion {
+      grid-template-columns: 1fr;
+
+      &__button {
+        font-size: 23px;
+      }
+
+      &__content {
+        p {
+          font-size: 20px;
+        }
+      }
+
+      &__item {
+
+        &:nth-child(5) {
+          .accordion__button {
+            &::after {
+              top: 34px;
+            }
+          }
+        }
+
+        &:nth-child(6) {
+          .accordion__button {
+            &::after {
+              top: 49px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint($bp-sm) {
+    .container {
+      padding-top: 20px;
+      padding-bottom: 15px;
+    }
+
+    &__title {
+      font-size: 29px;
+      margin-bottom: 30px;
+    }
+
+    .accordion {
+      gap: 15px;
+
+      &__button {
+        font-size: 16px;
+        padding: 19px 60px 20px 23px;
+
+        br {
+          display: none;
+        }
+
+        &::after {
+          width: 39px;
+          height: 39px;
+          top: 12px;
+          right: 14px;
+        }
+
+        &::before {
+          border-radius: 60px;
+        }
+      }
+
+      &__content {
+        p {
+          font-size: 16px;
+        }
+      }
+
+      &__item {
+
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5) {
+          .accordion__button {
+            &::after {
+              top: 24px;
+            }
+          }
+        }
+
+        &:nth-child(6) {
+          .accordion__button {
+            &::after {
+              top: 36px;
+            }
+          }
+        }
+      }
+
+      &__content {
+        padding: 0 25px 0 20px;
+        margin-top: 15px;
+
+        p {
+          padding-top: 15px;
+          padding-bottom: 15px;
+        }
+      }
+    }
+  }
+}

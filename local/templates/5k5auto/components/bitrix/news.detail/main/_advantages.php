@@ -4,28 +4,39 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var $arResult
  * @global CMain $APPLICATION
  */
+$advantages = \classes\Models\FiveKFiveAuto\Content\Advantages::getInstance()->getElements()->getResult();
 ?>
-<?php if (!empty($arResult['PROPERTIES']['ELEMENTS_ADVANTAGES']['VALUE'])): ?>
-    <section class="section-wrapper why-us gr-background">
+<?php if (!empty($advantages)): ?>
+    <section class="advantages">
         <div class="container">
-            <h2 class="section-heading kc-bold t-center"><?= $arResult['PROPERTIES']['TITLE_ADVANTAGES']['VALUE'] ?></h2>
-            <div class="whyus-row">
-                <?php foreach ($arResult['PROPERTIES']['ELEMENTS_ADVANTAGES']['VALUE'] as $advantage): ?>
-                    <?php if (empty($advantage['SUB_VALUES']['IMAGE_ELEMENT_ADVANTAGES']['VALUE'])) continue; ?>
-                    <div class="whyus-grid-col">
-                        <div class="icon-text-box gr-background d-flex justify-content-center align-items-center flex-column">
-                            <div class="icon-box">
-                                <img src="<?= CFile::GetPath($advantage['SUB_VALUES']['IMAGE_ELEMENT_ADVANTAGES']['VALUE']) ?>"
-                                     alt="<?= $advantage['SUB_VALUES']['TITLE_ELEMENT_ADVANTAGES']['VALUE'] ?>">
+            <h2 class="advantages__title"><?= $arResult['PROPERTIES']['TITLE_ADVANTAGES']['~VALUE'] ?></h2>
+            <div class="advantages__list advantages-cards">
+                <?php foreach ($advantages as $key => $advantage): ?>
+                    <?php if (empty($advantage['IMAGE']['VALUE']) || empty($advantage['DESCRIPTION']['~VALUE'])) continue ?>
+                    <?php if ($key % 2 === 0): ?>
+                        <div class="advantages-cards__item">
+                            <div class="advantages-cards__img">
+                                <img width="126" height="126" src="<?= CFile::GetPath($advantage['IMAGE']['VALUE']) ?>"
+                                     alt="<?= $advantage['DESCRIPTION']['~VALUE'] ?>">
                             </div>
-                            <h3 class="icon-text-box-heading kc-bold"><?= $advantage['SUB_VALUES']['TITLE_ELEMENT_ADVANTAGES']['VALUE'] ?></h3>
-                            <p class="icon-text">
-                                <?= $advantage['SUB_VALUES']['DESC_ELEMENT_ADVANTAGES']['VALUE'] ?>
+                            <p class="advantages-cards__text">
+                                <?= $advantage['DESCRIPTION']['~VALUE'] ?>
                             </p>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <div class="advantages-cards__item">
+                            <div class="advantages-cards__img">
+                                <img width="90" height="90" src="<?= CFile::GetPath($advantage['IMAGE']['VALUE']) ?>"
+                                     alt="<?= $advantage['DESCRIPTION']['~VALUE'] ?>">
+                            </div>
+                            <p class="advantages-cards__text">
+                                <?= $advantage['DESCRIPTION']['~VALUE'] ?>
+                            </p>
+                        </div>
+                    <?php endif ?>
                 <?php endforeach; ?>
             </div>
         </div>
     </section>
 <?php endif; ?>
+

@@ -1,0 +1,300 @@
+.price-list {
+  position: relative;
+  z-index: 12;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 1290px;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('../images/price-list_bg.png') top center / cover no-repeat;
+    position: absolute;
+    z-index: -11;
+    opacity: 0.3;
+  }
+
+  .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+  }
+
+  &__title {
+    font-family: "Radiotechnika";
+    font-size: 76px;
+    line-height: 140%;
+    text-transform: uppercase;
+    background: $bg-title;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 60px;
+  }
+
+  .price-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 20px;
+    margin-bottom: 68px;
+
+    &__img {
+      padding: 1px;
+      background: radial-gradient(ellipse, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0) 100%);
+      border-radius: 20px;
+      margin-bottom: 15px;
+      width: 380px;
+      height: 173px;
+
+      img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: top center;
+        object-position: top center;
+        border-radius: 20px;
+        width: 378px;
+        height: 171px;
+      }
+    }
+
+    &__cost {
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 150%;
+      background: linear-gradient(233deg, #f5cd89 0%, #fab498 51.96%, #e9c5af 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 7px;
+    }
+
+    &__name {
+      font-size: 22px;
+      line-height: 150%;
+    }
+  }
+
+  .selects-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 38px;
+
+    &__btn {
+      display: block;
+      min-width: 369px;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 130%;
+      text-align: center;
+      min-height: 97px;
+      padding: 10px 15px;
+      margin: 0;
+      text-decoration: none;
+      color: $color-text;
+      background: $bg-btn-main;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      touch-action: manipulation;
+      vertical-align: top;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      border-radius: 78px;
+      position: relative;
+      overflow: hidden;
+
+      &:hover,
+      &:focus {
+        background: $bg-btn-main-hover;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: $bg-btn-glare;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        -webkit-animation: glare 1s ease-in-out 1;
+        animation: glare 1s ease-in-out 1;
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 369px;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 130%;
+      text-align: center;
+      min-height: 97px;
+      padding: 10px 15px;
+      margin: 0;
+      text-decoration: none;
+      border: 1px solid $white;
+      color: $color-text;
+      border-radius: 78px;
+      position: relative;
+      z-index: 1;
+
+      &:hover,
+      &:focus {
+
+        border-color: #ffffff59;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          -webkit-backdrop-filter: blur(42px);
+          backdrop-filter: blur(42px);
+          background: $bg-link-main-hover;
+          border-radius: 78px;
+          z-index: -1;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($bp-xl) {
+    .price-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 45px 18px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @include breakpoint($bp-lg) {
+    &::after {
+      top: 0;
+    }
+
+    &__title {
+      font-size: 59px;
+      margin-bottom: 50px;
+    }
+
+    .price-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 45px 15px;
+      max-width: 556px;
+
+      &__img {
+        border-radius: 18px;
+        width: 268px;
+        height: 122px;
+
+        img {
+          border-radius: 18px;
+          width: 266px;
+          height: 120px;
+        }
+      }
+
+      &__cost {
+        font-size: 36px;
+      }
+
+      &__name {
+        font-size: 20px;
+      }
+    }
+
+    .selects-buttons {
+      gap: 34px;
+
+      &__btn {
+        min-width: 335px;
+        min-height: 87px;
+        font-size: 19px;
+      }
+
+      &__link {
+        min-width: 335px;
+        min-height: 87px;
+        font-size: 19px;
+      }
+    }
+  }
+
+  @include breakpoint($bp-sm) {
+    &::after {
+      top: -10%;
+    }
+
+    .container {
+      padding-top: 20px;
+      padding-bottom: 30px;
+    }
+
+    &__title {
+      font-size: 29px;
+      margin-bottom: 30px;
+    }
+
+    .price-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 9px;
+      margin-bottom: 35px;
+
+      &__img {
+        border-radius: 9px;
+        margin-bottom: 7px;
+        width: 165px;
+        height: 75px;
+
+        img {
+          border-radius: 9px;
+          width: 163px;
+          height: 73px;
+        }
+      }
+
+      &__cost {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+
+      &__name {
+        font-size: 11px;
+      }
+    }
+
+    .selects-buttons {
+      gap: 20px;
+      flex-direction: column;
+
+      &__btn {
+        min-width: 305px;
+        font-size: 14px;
+        min-height: 64px;
+      }
+
+      &__link {
+        min-width: 305px;
+        font-size: 14px;
+        min-height: 64px;
+      }
+    }
+  }
+}

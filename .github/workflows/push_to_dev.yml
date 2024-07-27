@@ -1,4 +1,4 @@
-name: "Merge to Stage"
+name: "Push to dev"
 on:
   push:
     branches: [ "dev" ]
@@ -14,10 +14,5 @@ jobs:
           username: maximenko
           key: ${{secrets.SSH_PRIVATE_KEY_DEV}}
           script: |
-            cd ~/projects/bitrixProjects/5k5auto/www
-            git pull https://maximenkoivan:${{ secrets.AUTO_MERGE_TOKEN }}@github.com/${{ github.repository }}.git dev
-            cd bitrix
-            rm -R cache
-            rm -R managed_cache
-            cd ../..
-            docker compose up -d
+            cd ~/projects/bitrixProjects/5k5auto/deploy
+            sh update.sh

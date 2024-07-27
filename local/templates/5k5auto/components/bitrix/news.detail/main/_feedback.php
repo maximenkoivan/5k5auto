@@ -1,78 +1,59 @@
 <?php
-
-use classes\Models\FiveKFiveAuto\Common\CommonData;
-use classes\Models\FiveKFiveAuto\Feedback\FormSettings;
-
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /**
  * @var $arResult
  * @global CMain $APPLICATION
  */
+$fileId = \classes\Models\FiveKFiveAuto\Common\CommonData::getInstance()->getPropertiesByCode('POLICY_FOOTER')->getResult()[0] ?: '';
+$formSettings = \classes\Models\FiveKFiveAuto\Feedback\FormSettings::getInstance()->getElementByCode('settings')->getResult();
 $request = \Bitrix\Main\Context::getCurrent()->getRequest();
-$formSettings = FormSettings::getInstance();
-$feedbackSettings = $formSettings->getPropertiesByPostfix('FEEDBACK')->getResult();
-$formCommonSettings = $formSettings->getPropertiesByPostfix('COMMON')->getResult();
-$privacyPolicyLink = CommonData::getInstance()->getPropertiesByCode('POLICY_FOOTER')->getResult();
-$link = CFile::GetPath($privacyPolicyLink[0]);
-$consentText = str_replace('#TEXT_BUTTON#', '"' . $feedbackSettings['TEXT_BTN_FEEDBACK']['VALUE'] . '"', $formCommonSettings['CONSENT_TEXT_COMMON']['VALUE']);
-$consentText = str_replace('#PRIVACY_POLICY#', "<a href='{$link}' target='_blank'>{$formCommonSettings['TEXT_LINK_COMMON']['VALUE']}</a>", $consentText);
 ?>
-<?php if (!empty($feedbackSettings)): ?>
-    <section class="section-wrapper form-section pt-0 pb-0">
-        <div class="container">
-            <div class="row flex-lg-row flex-column-reverse">
-                <div class="col-lg-6 d-flex align-items-end">
-                    <?php if (!empty($feedbackSettings['IMAGE_FEEDBACK']['VALUE'])): ?>
-                        <div class="former-img">
-                            <img src="<?= CFile::GetPath($feedbackSettings['IMAGE_FEEDBACK']['VALUE']) ?>"
-                                 alt="<?= CFile::GetFileArray($feedbackSettings['IMAGE_FEEDBACK']['VALUE'])['ORIGINAL_NAME'] ?>">
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <div class="col-lg-6 d-flex align-items-end">
-
-                    <div class="form-area form-area-rose">
-                        <div class="form-heading kc-bold t-center">
-                            <?= $feedbackSettings['TITLE_FEEDBACK']['VALUE'] ?>
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <form action="/request/callback.php" method="POST"
-                                  data-success-header="<?= $feedbackSettings['TITLE_SUCCESS_FEEDBACK']['VALUE'] ?>"
-                                  data-success-message="<?= $feedbackSettings['TEXT_SUCCESS_FEEDBACK']['~VALUE']['TEXT'] ?? '' ?>"
-                                  class="form-wrap data-form">
-
-                                <div class="form-input form-contact-input">
-                                    <input type="text" name="formName"
-                                           placeholder="<?= $feedbackSettings['PLH_1_FEEDBACK']['VALUE'] ?>">
-                                </div>
-
-                                <div class="form-input form-contact-input">
-                                    <input type="tel" name="formPhone"
-                                           placeholder="<?= $feedbackSettings['PLH_2_FEEDBACK']['VALUE'] ?>">
-                                </div>
-
-                                <div style="display: none">
-                                    <input name="utm_source" value="<?= $request->get('utm_source') ?>">
-                                    <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">
-                                    <input name="utm_campaign" value="<?= $request->get('utm_campaign') ?>">
-                                    <input name="utm_term" value="<?= $request->get('utm_term') ?>">
-                                    <input name="utm_content" value="<?= $request->get('utm_content') ?>">
-                                </div>
-
-                                <button type="submit" class="submit-button button-element gradient-button">
-                                    <?= $feedbackSettings['TEXT_BTN_FEEDBACK']['VALUE'] ?>
-                                </button>
-
-                                <div class="form-agreement">
-                                    <?= $consentText ?>
-                                </div>
-                            </form>
-                        </div>
+<section class="application">
+    <div class="container">
+        <h2 class="application__title"><?= $arResult['PROPERTIES']['TITLE_FEEDBACK']['~VALUE'] ?></h2>
+        <div class="application-order">
+            <div class="application-order__form">
+                <h3 class="application-order__title"><?= $arResult['PROPERTIES']['SUBTITLE_FEEDBACK']['~VALUE'] ?></h3>
+                <p class="application-order__text">
+                    <?= $arResult['PROPERTIES']['TEXT_FEEDBACK']['~VALUE'] ?>
+                </p>
+                <form class="application-order__select select-form" action="/request/feedback.php" method="POST"
+                      data-success-header="<?= $formSettings['TITLE_OK']['~VALUE'] ?>"
+                      data-success-message="<?= $formSettings['TEXT_OK']['~VALUE'] ?>">
+                    <div id="orderForm" class="select-form__input select-form__input_name">
+                        <input type="text" id="name" name="name"
+                               placeholder="<?= $formSettings['PLH_1_CALLBACK']['~VALUE'] ?>">
                     </div>
-
-                </div>
+                    <div class="select-form__input select-form__input_phone">
+                        <input type="tel" id="phone" name="phone"
+                               placeholder="<?= $formSettings['PLH_1_CALLBACK']['~VALUE'] ?>">
+                    </div>
+                    <div style="display: none">
+                        <input name="form" value="<?= $formSettings['FORM_NAME_CALLBACK']['~VALUE'] ?>">
+                        <input name="utm_source" value="<?= $request->get('utm_source') ?>">
+                        <input name="utm_medium" value="<?= $request->get('utm_medium') ?>">
+                        <input name="utm_campaign" value="<?= $request->get('utm_campaign') ?>">
+                        <input name="utm_term" value="<?= $request->get('utm_term') ?>">
+                        <input name="utm_content" value="<?= $request->get('utm_content') ?>">
+                    </div>
+                    <button class="select-form__btn"
+                            type="submit"><?= $formSettings['TEXT_BTN_CALLBACK']['~VALUE'] ?></button>
+                </form>
+                <?php if (!empty($fileId) && !empty($formSettings['TEXT_CONSENT']['~VALUE']) && !empty($formSettings['TEXT_CONSENT']['~DESCRIPTION'])): ?>
+                    <p class="application-order__text application-order__text_policy">
+                        <?= $formSettings['TEXT_CONSENT']['~VALUE'] ?>
+                        <a href="<?= CFile::GetPath($fileId) ?>" target="_blank"
+                           rel="noopener noreferrer"><?= $formSettings['TEXT_CONSENT']['~DESCRIPTION'] ?></a>
+                    </p>
+                <?php endif; ?>
+            </div>
+            <div class="application-order__img">
+                <?php if (!empty($arResult['PROPERTIES']['IMAGE_FEEDBACK']['VALUE'])): ?>
+                    <img width="480" height="740"
+                         src="<?= CFile::GetPath($arResult['PROPERTIES']['IMAGE_FEEDBACK']['VALUE']) ?>"
+                         alt="<?= $arResult['PROPERTIES']['IMAGE_FEEDBACK']['DESCRIPTION'] ?>">
+                <?php endif; ?>
             </div>
         </div>
-    </section>
-<?php endif; ?>
+    </div>
+</section>

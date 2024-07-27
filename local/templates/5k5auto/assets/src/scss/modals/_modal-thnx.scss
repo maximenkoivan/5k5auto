@@ -1,0 +1,116 @@
+.modal-thnx {
+  position: relative;
+  padding: 45px 10px 10px 10px !important;
+  border-radius: 20px !important;
+  background: none !important;
+  display: none;
+  width: 780px;
+  height: 657px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-backdrop-filter: blur(42px);
+    backdrop-filter: blur(42px);
+    border: 1px solid $border-color;
+    background: $bg-card;
+    opacity: 0.5;
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  &__img {
+    position: relative;
+    top: 10px;
+    left: -5px;
+    max-width: 680px;
+
+    img {
+      width: 100%;
+      height: auto;
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  &__title {
+    font-family: "Radiotechnika";
+    font-size: 43px;
+    text-align: center;
+    line-height: 140%;
+    text-transform: uppercase;
+    background: $bg-title;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+  }
+
+  @include breakpoint($bp-xl) {
+    width: 720px;
+    height: 630px;
+
+    &__title {
+      font-size: 38px;
+    }
+
+    &__img {
+      top: 5px;
+      left: 0;
+      max-width: 660px;
+    }
+  }
+
+  @include breakpoint($bp-lg) {
+    padding: 25px 10px 10px 10px !important;
+    width: 579px;
+    height: 520px;
+
+    &__img {
+      max-width: 540px;
+      top: 10px;
+      left: -10px;
+    }
+
+    &__title {
+      font-size: 36px;
+    }
+  }
+
+  @include breakpoint($bp-sm) {
+    padding: 25px 10px 10px 10px !important;
+    width: 335px;
+    height: 340px;
+
+    &__title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    &__img {
+      max-width: 320px;
+      top: 15px;
+      left: -15px;
+    }
+
+    .f-button.is-close-btn {
+      right: 5px !important;
+      top: 10px !important;
+      background: none;
+    }
+  }
+
+}
