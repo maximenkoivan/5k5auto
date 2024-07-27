@@ -44,9 +44,17 @@
       background: radial-gradient(ellipse, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0) 100%);
       border-radius: 20px;
       margin-bottom: 15px;
+      width: 380px;
+      height: 173px;
 
       img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: top center;
+        object-position: top center;
         border-radius: 20px;
+        width: 378px;
+        height: 171px;
       }
     }
 
@@ -166,6 +174,16 @@
     }
   }
 
+  @include breakpoint($bp-xl) {
+    .price-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 45px 18px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
   @include breakpoint($bp-lg) {
     &::after {
       top: 0;
@@ -178,13 +196,18 @@
 
     .price-cards {
       grid-template-columns: repeat(2, 1fr);
-      gap: 45px 18px;
+      gap: 45px 15px;
+      max-width: 556px;
 
       &__img {
         border-radius: 18px;
+        width: 268px;
+        height: 122px;
 
         img {
           border-radius: 18px;
+          width: 266px;
+          height: 120px;
         }
       }
 
@@ -237,9 +260,13 @@
       &__img {
         border-radius: 9px;
         margin-bottom: 7px;
+        width: 165px;
+        height: 75px;
 
         img {
           border-radius: 9px;
+          width: 163px;
+          height: 73px;
         }
       }
 
