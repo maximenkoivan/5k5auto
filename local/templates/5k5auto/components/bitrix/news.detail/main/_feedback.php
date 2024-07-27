@@ -26,7 +26,7 @@ $request = \Bitrix\Main\Context::getCurrent()->getRequest();
                     </div>
                     <div class="select-form__input select-form__input_phone">
                         <input type="tel" id="phone" name="phone"
-                               placeholder="<?= $formSettings['PLH_1_CALLBACK']['~VALUE'] ?>">
+                               placeholder="<?= $formSettings['PLH_2_CALLBACK']['~VALUE'] ?>">
                     </div>
                     <div style="display: none">
                         <input name="ajax" value="callback">
