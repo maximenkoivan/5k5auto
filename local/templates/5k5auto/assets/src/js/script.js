@@ -358,38 +358,36 @@ nextButtons.forEach(button => {
 
     if (currentQuiz.classList.contains('quiz-3')) {
       // Получаем выбранное значение в quiz-3
-      autoUse = document.querySelector('input[name="auto-use"]:checked')?.value;
-
+      autoUse = document.querySelector('input[name="auto-use"]:checked')?.getAttribute('data-auto-use');
       // Переход к quiz-4
       goToNextStep();
     } else if (currentQuiz.classList.contains('quiz-4')) {
       // Получаем выбранное значение в quiz-4
-      autoSell = document.querySelector('input[name="auto-sell"]:checked')?.value;
-
+      autoSell = document.querySelector('input[name="auto-sell"]:checked')?.getAttribute('data-auto-sell');
       // Логика для определения финального экрана
-      if (autoUse === "Каждый день" || autoUse === "1-2 раза в неделю") {
-        if (autoSell === "Да") {
+      if (autoUse === "1" || autoUse === "2") {
+        if (autoSell === "1") {
           goToFinishStep('quiz-3');
-        } else if (autoSell === "Нет") {
+        } else if (autoSell === "2") {
           goToFinishStep('quiz-4');
         }
-      } else if (autoUse === "Редко") {
-        if (autoSell === "Да") {
+      } else if (autoUse === "3") {
+        if (autoSell === "1") {
           goToFinishStep('quiz-3');
-        } else if (autoSell === "Нет") {
+        } else if (autoSell === "2") {
           goToFinishStep('quiz-4');
         }
       }
     } else if (currentQuiz.classList.contains('quiz-1')) {
-      const selectedValue = document.querySelector('input[name="auto-age"]:checked')?.value;
-      if (selectedValue === 'Менее 1 года') {
+      const autoAge = document.querySelector('input[name="auto-age"]:checked')?.getAttribute('data-auto-age');
+      if (autoAge === '1') {
         goToFinishStep('quiz-1');
       } else {
         goToNextStep();
       }
     } else if (currentQuiz.classList.contains('quiz-2')) {
-      const selectedValue = document.querySelector('input[name="auto-price"]:checked')?.value;
-      if (selectedValue === 'Более 4 млн.') {
+      const autoPrice = document.querySelector('input[name="auto-price"]:checked')?.getAttribute('data-auto-price');
+      if (autoPrice === '3') {
         goToFinishStep('quiz-2');
       } else {
         goToNextStep();

@@ -60,10 +60,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         </div>
                         <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_1_1_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_1_1_QUIZ']['~VALUE'] as $answer): ?>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_1_1_QUIZ']['~VALUE'] as $key => $answer): ?>
                                 <label class="checkbox-element">
                                     <?= $answer ?>
-                                    <input type="radio" value="<?= $answer ?>" name="auto-age">
+                                    <input type="radio" value="<?= $answer ?>" name="auto-age" data-auto-age="<?= $key + 1 ?>">
                                     <span class="checkmark"></span>
                                 </label>
                             <?php endforeach; ?>
@@ -85,10 +85,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         </div>
                         <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_2_2_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_2_2_QUIZ']['~VALUE'] as $answer): ?>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_2_2_QUIZ']['~VALUE'] as $key => $answer): ?>
                                 <label class="checkbox-element">
                                     <?= $answer ?>
-                                    <input type="radio" value="<?= $answer ?>" name="auto-price">
+                                    <input type="radio" value="<?= $answer ?>" name="auto-price" data-auto-price="<?= $key + 1 ?>">
                                     <span class="checkmark"></span>
                                 </label>
                             <?php endforeach; ?>
@@ -110,10 +110,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         </div>
                         <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_3_2_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_3_2_QUIZ']['~VALUE'] as $answer): ?>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_3_2_QUIZ']['~VALUE'] as $key => $answer): ?>
                                 <label class="checkbox-element">
                                     <?= $answer ?>
-                                    <input type="radio" value="<?= $answer ?>" name="auto-use">
+                                    <input type="radio" value="<?= $answer ?>" name="auto-use" data-auto-use="<?= $key + 1 ?>">
                                     <span class="checkmark"></span>
                                 </label>
                             <?php endforeach; ?>
@@ -135,10 +135,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         </div>
                         <h2 class="modal-quiz__title"><?= $arResult['PROPERTIES']['QUESTION_STEP_4_2_QUIZ']['~VALUE'] ?></h2>
                         <div class="modal-quiz__questions">
-                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_4_2_QUIZ']['~VALUE'] as $answer): ?>
+                            <?php foreach ($arResult['PROPERTIES']['ANSWER_STEP_4_2_QUIZ']['~VALUE'] as $key => $answer): ?>
                                 <label class="checkbox-element">
                                     <?= $answer ?>
-                                    <input type="radio" value="<?= $answer ?>" name="auto-sell">
+                                    <input type="radio" value="<?= $answer ?>" name="auto-sell" data-auto-sell="<?= $key + 1 ?>">
                                     <span class="checkmark"></span>
                                 </label>
                             <?php endforeach; ?>
