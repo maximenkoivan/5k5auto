@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Замена остекления | ДенПрофМонтаж - промышленный альпинизм");
+$APPLICATION->SetTitle("Детейлинг автомобилей в Москве");
 ?>
     <main class="main">
         <? $APPLICATION->IncludeComponent(
