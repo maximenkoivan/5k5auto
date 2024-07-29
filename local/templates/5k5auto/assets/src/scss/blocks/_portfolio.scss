@@ -77,6 +77,18 @@
       position: relative;
       cursor: pointer;
 
+      &::after {
+        content: '';
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        //background: url('../images/play_video.png') top center / cover no-repeat;
+        position: absolute;
+        z-index: 1;
+      }
+
       img {
         margin-bottom: 11px;
         height: 592px;
@@ -168,6 +180,11 @@
           height: 480px;
         }
       }
+      &__img {
+        img {
+          height: 480px;
+        }
+      }
     }
   }
 
@@ -178,6 +195,11 @@
 
     &-card {
       &__video {
+        img {
+          height: 420px;
+        }
+      }
+      &__img {
         img {
           height: 420px;
         }
@@ -215,6 +237,11 @@
           height: 100%;
         }
       }
+      &__img {
+        img {
+          height: 100%;
+        }
+      }
     }
   }
 
@@ -237,6 +264,20 @@
     &-card {
 
       &__video {
+        margin-bottom: 10px;
+
+        &::after {
+          width: 59px;
+          height: 59px;
+        }
+
+        img {
+          height: 345px;
+          border-radius: 12px;
+        }
+      }
+
+      &__img {
         margin-bottom: 10px;
 
         &::after {

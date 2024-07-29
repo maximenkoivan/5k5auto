@@ -13,7 +13,7 @@ class Quiz extends Iblock
 
     private array $formFields = [
         'name' => [
-            'ru' => '""Имя"',
+            'ru' => '"Имя"',
             'en' => 'Name',
             'rules' => 'required|min:2|max:50',
             'value' => 'Не указано',
