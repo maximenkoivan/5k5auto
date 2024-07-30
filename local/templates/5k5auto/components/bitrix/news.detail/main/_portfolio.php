@@ -37,7 +37,7 @@ $slides = \classes\Models\FiveKFiveAuto\Content\Portfolio::getInstance()->getEle
                                         <?php endif; ?>
                                         <div class="portfolio-card__images gallery">
                                             <?php foreach ($slide['IMAGES']['VALUE'] as $key => $imageId): ?>
-                                                <?php if ($key > 3 || (empty($slide['LINK']['~VALUE']) && $key === 0)) continue ?>
+                                                <?php if ((!empty($slide['LINK']['~VALUE']) && $key > 2) || (empty($slide['LINK']['~VALUE']) && $key === 0)) continue ?>
                                                 <a class="gallery__item"
                                                    href="<?= CFile::GetPath($imageId) ?>"
                                                    data-fancybox="gallery">
