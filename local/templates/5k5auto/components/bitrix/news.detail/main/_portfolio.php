@@ -17,27 +17,30 @@ $slides = \classes\Models\FiveKFiveAuto\Content\Portfolio::getInstance()->getEle
                 <div class="swiper portfolio-slider">
                     <div class="swiper-wrapper">
                         <?php foreach ($slides as $slide): ?>
-                            <?php if (empty($slide['LINK']['~VALUE']) && empty($slide['IMAGES']['VALUE'])) continue ?>
+                            <?php if (empty($slide['IMAGES']['VALUE'])) continue ?>
                             <div class="swiper-slide">
                                 <div class="portfolio-card">
                                     <div class="portfolio-card__content">
-                                        <?php if (!empty($slide['LINK']['~VALUE'])): ?>
-                                            <div class="portfolio-card__video"
-                                                 data-video="<?= $slide['LINK']['~VALUE'] ?>">
-                                                <img src="//img.youtube.com/vi/<?= Generic::getYoutubeData($slide['LINK']['~VALUE'])['VIDEO'] ?>/maxresdefault.jpg"
-                                                     alt="<?= $slide['DESCRIPTION']['~VALUE'] ?>">
-                                            </div>
-                                        <?php else: ?>
-                                            <a class="portfolio-card__img"
-                                               href="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"
-                                               data-fancybox="gallery">
-                                                <img src="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"
-                                                     alt="<?= $slide['IMAGES']['DESCRIPTION'][0] ?>">
-                                            </a>
-                                        <?php endif; ?>
+                                        <?php foreach ($slide['IMAGES']['VALUE'] as $key => $imageId): ?>
+                                            <?php if (!empty($slide['IMAGES']['DESCRIPTION'][$key])): ?>
+                                                <div class="portfolio-card__video"
+                                                     data-video="<?= $slide['IMAGES']['DESCRIPTION'][$key] ?>">
+                                                    <img src="<?= CFile::GetPath($imageId) ?>"
+                                                         alt="<?= $slide['DESCRIPTION']['~VALUE'] ?>">
+                                                </div>
+                                            <?php else: ?>
+                                                <a class="portfolio-card__img"
+                                                   href="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"
+                                                   data-fancybox="gallery">
+                                                    <img src="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"
+                                                         alt="<?= $slide['IMAGES']['DESCRIPTION'][0] ?>">
+                                                </a>
+                                            <?php endif; ?>
+                                            <?php unset ($slide['IMAGES']['VALUE'][$key]); break ?>
+                                        <?php endforeach; ?>
                                         <div class="portfolio-card__images gallery">
                                             <?php foreach ($slide['IMAGES']['VALUE'] as $key => $imageId): ?>
-                                                <?php if ((!empty($slide['LINK']['~VALUE']) && $key > 2) || (empty($slide['LINK']['~VALUE']) && $key === 0)) continue ?>
+                                                <?php if ($key > 3) continue ?>
                                                 <a class="gallery__item"
                                                    href="<?= CFile::GetPath($imageId) ?>"
                                                    data-fancybox="gallery">
