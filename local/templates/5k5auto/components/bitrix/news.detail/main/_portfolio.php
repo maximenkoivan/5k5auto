@@ -30,10 +30,10 @@ $slides = \classes\Models\FiveKFiveAuto\Content\Portfolio::getInstance()->getEle
                                                 </div>
                                             <?php else: ?>
                                                 <a class="portfolio-card__image"
-                                                   href="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"
+                                                   href="<?= CFile::GetPath($slide['IMAGES']['VALUE'][$key]) ?>"
                                                    data-fancybox="gallery">
-                                                    <img src="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"
-                                                         alt="<?= $slide['IMAGES']['DESCRIPTION'][0] ?>">
+                                                    <img src="<?= CFile::GetPath($slide['IMAGES']['VALUE'][$key]) ?>"
+                                                         alt="<?= $slide['IMAGES']['DESCRIPTION'][$key] ?>">
                                                 </a>
                                             <?php endif; ?>
                                             <?php unset ($slide['IMAGES']['VALUE'][$key]); break ?>
