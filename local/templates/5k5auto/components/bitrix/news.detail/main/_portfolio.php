@@ -29,7 +29,7 @@ $slides = \classes\Models\FiveKFiveAuto\Content\Portfolio::getInstance()->getEle
                                                          alt="<?= $slide['DESCRIPTION']['~VALUE'] ?>">
                                                 </div>
                                             <?php else: ?>
-                                                <a class="portfolio-card__img"
+                                                <a class="portfolio-card__image"
                                                    href="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"
                                                    data-fancybox="gallery">
                                                     <img src="<?= CFile::GetPath($slide['IMAGES']['VALUE'][0]) ?>"

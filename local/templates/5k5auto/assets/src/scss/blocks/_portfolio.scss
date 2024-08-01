@@ -9,7 +9,7 @@
     top: -3%;
     left: 50%;
     transform: translateX(-50%);
-    background: url('../images/portfolio_bg.png') top center / cover no-repeat;
+    background: url('../images/portfolio_bg.webp') top center / cover no-repeat;
     position: absolute;
     z-index: -9;
   }
@@ -61,7 +61,7 @@
       }
 
       img {
-        margin-bottom: 11px;
+        width: 580px;
         height: 592px;
         -o-object-fit: cover;
         object-fit: cover;
@@ -71,7 +71,7 @@
       }
     }
 
-    &__img {
+    &__image {
       width: 100%;
       margin-bottom: 11px;
       position: relative;
@@ -90,7 +90,7 @@
       }
 
       img {
-        margin-bottom: 11px;
+        width: 580px;
         height: 592px;
         -o-object-fit: cover;
         object-fit: cover;
@@ -103,12 +103,21 @@
     .gallery {
       display: flex;
       gap: 11px;
+      width: 580px;
+      height: 105px;
 
       a {
-        width: calc(33.33333% - 7.33333px);
+        width: 185px;
+        height: 105px;
       }
 
       img {
+        width: 185px;
+        height: 105px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: top center;
+        object-position: top center;
         border-radius: 20px;
       }
     }
@@ -177,12 +186,29 @@
     &-card {
       &__video {
         img {
+          width: 410px;
           height: 480px;
         }
       }
-      &__img {
+      &__image {
         img {
+          width: 410px;
           height: 480px;
+        }
+      }
+    }
+
+    .gallery {
+      width: 410px;
+      height: 73px;
+
+      a {
+        width: 129px;
+        height: 73px;
+
+        img {
+          width: 129px;
+          height: 73px;
         }
       }
     }
@@ -196,12 +222,29 @@
     &-card {
       &__video {
         img {
+          width: 340px;
           height: 420px;
         }
       }
-      &__img {
+      &__image {
         img {
+          width: 340px;
           height: 420px;
+        }
+      }
+    }
+
+    .gallery {
+      width: 340px;
+      height: 60px;
+
+      a {
+        width: 106px;
+        height: 60px;
+
+        img {
+          width: 106px;
+          height: 60px;
         }
       }
     }
@@ -234,12 +277,29 @@
     &-card {
       &__video {
         img {
-          height: 100%;
+          width: 100%;
+          height: 394px;
         }
       }
-      &__img {
+      &__image {
         img {
-          height: 100%;
+          width: 100%;
+          height: 394px;
+        }
+      }
+    }
+
+    .gallery {
+      width: 100%;
+      height: 127px;
+
+      a {
+        width: 100%;
+        height: 127px;
+
+        img {
+          width: 100%;
+          height: 127px;
         }
       }
     }
@@ -272,12 +332,13 @@
         }
 
         img {
+          width: 340px;
           height: 345px;
           border-radius: 12px;
         }
       }
 
-      &__img {
+      &__image {
         margin-bottom: 10px;
 
         &::after {
@@ -286,9 +347,14 @@
         }
 
         img {
+          width: 340px;
           height: 345px;
           border-radius: 12px;
         }
+      }
+
+      &__content {
+        margin-bottom: 20px;
       }
 
       &__signature {
@@ -298,9 +364,16 @@
       .gallery {
         display: flex;
         gap: 6px;
+        height: 62px;
 
         a {
-          width: calc(33.33333% - 3.33333px);
+          width: 109px;
+          height: 62px;
+
+          img {
+            width: 109px;
+            height: 62px;
+          }
         }
 
         img {
